@@ -1,7 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { ADMIN_SESSION_COOKIE, getSessionToken, verifyCredentials } from "@/lib/admin-auth";
 
 export type ProductInput = {
   name: string;
@@ -50,8 +53,28 @@ export async function deleteProduct(id: string) {
   return { error: null };
 }
 
+export async function login(formData: FormData) {
+  const username = String(formData.get("username") ?? "");
+  const password = String(formData.get("password") ?? "");
+
+  if (!verifyCredentials(username, password)) {
+    return { error: "Usuario o contraseña incorrectos." };
+  }
+
+  const cookieStore = await cookies();
+  cookieStore.set(ADMIN_SESSION_COOKIE, await getSessionToken(), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 7,
+  });
+
+  redirect("/admin");
+}
+
 export async function signOut() {
-  const supabase = await createClient();
-  await supabase.auth.signOut();
+  const cookieStore = await cookies();
+  cookieStore.delete(ADMIN_SESSION_COOKIE);
   revalidatePath("/", "layout");
 }

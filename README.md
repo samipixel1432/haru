@@ -13,34 +13,32 @@ npm run dev
 
 Abre [http://localhost:3000](http://localhost:3000). Mientras no configures Supabase (ver
 abajo), el sitio funciona con 6 productos de ejemplo (`lib/demo-products.ts`) solo para que
-puedas ver el diseño — no se guardan cambios reales y el panel `/admin` queda abierto sin
-login.
+puedas ver el diseño — no se guardan cambios reales, pero el panel `/admin` sí pide login.
 
-## Configurar Supabase (para productos reales y el panel admin)
+## Panel de administración
+
+- Entra a `/admin/login` con el usuario **antonela** y la contraseña **antonela123**.
+- Desde `/admin` puedes crear, editar y eliminar productos (foto, nombre, descripción,
+  precio, categoría, stock y si aparece en "Destacados" de la portada).
+- Para cambiar el usuario o la contraseña, define las variables de entorno
+  `ADMIN_USERNAME` y `ADMIN_PASSWORD` (ver `.env.local.example`).
+
+## Configurar Supabase (para guardar productos de verdad)
 
 1. Crea una cuenta y un proyecto gratis en [supabase.com](https://supabase.com).
 2. En tu proyecto, ve a **SQL Editor** y pega el contenido de
    [`supabase/schema.sql`](supabase/schema.sql), luego ejecútalo. Esto crea la tabla
    `products` y el bucket de imágenes `product-images`.
-3. Ve a **Authentication > Users** y crea un usuario (tu correo y una contraseña) — con ese
-   usuario vas a entrar a `/admin`. Puedes desactivar el registro público en
-   **Authentication > Settings** para que nadie más pueda crear cuentas.
-4. Ve a **Project Settings > API** y copia la **Project URL** y la **anon public key**.
-5. Copia `.env.local.example` a `.env.local` y pega esos valores:
+3. Ve a **Project Settings > API** y copia la **Project URL** y la **anon public key**.
+4. Copia `.env.local.example` a `.env.local` y pega esos valores:
 
    ```bash
    cp .env.local.example .env.local
    ```
 
-6. Reinicia `npm run dev`. Ahora el catálogo lee/escribe de tu base de datos real y
-   `/admin` pide login.
-
-## Panel de administración
-
-- Entra a `/admin/login` con el usuario que creaste en Supabase.
-- Desde `/admin` puedes crear, editar y eliminar productos (foto, nombre, descripción,
-  precio, categoría, stock y si aparece en "Destacados" de la portada).
-- Las fotos se suben directo al bucket `product-images` de Supabase Storage.
+5. Reinicia `npm run dev`. Ahora el catálogo lee/escribe de tu base de datos real. Las
+   fotos que subas desde `/admin` se guardan en el bucket `product-images` de Supabase
+   Storage.
 
 ## Número de WhatsApp para pedidos
 
