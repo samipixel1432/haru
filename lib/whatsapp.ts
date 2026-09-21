@@ -1,4 +1,4 @@
-import { CartItem } from "./types";
+import { CartItem, getCategoryLabel } from "./types";
 
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "573184124805";
 
@@ -14,13 +14,24 @@ export function buildWhatsappMessage(items: CartItem[]) {
   const lines = [
     "¡Hola Haru Boutique! Quiero hacer este pedido:",
     "",
-    ...items.map(
-      (i) =>
-        `• ${i.name} x${i.quantity} — ${formatPrice(i.price)} c/u = ${formatPrice(
-          i.price * i.quantity
-        )}`
-    ),
-    "",
+    ...items.flatMap((item, index) => {
+      const itemLines = [`${index + 1}. *${item.name}*`, `   Categoría: ${getCategoryLabel(item.category)}`];
+
+      if (item.description) {
+        itemLines.push(`   Descripción: ${item.description}`);
+      }
+      if (item.image_url) {
+        itemLines.push(`   Foto: ${item.image_url}`);
+      }
+
+      itemLines.push(
+        `   Cantidad: ${item.quantity}`,
+        `   Precio: ${formatPrice(item.price)} c/u = ${formatPrice(item.price * item.quantity)}`,
+        ""
+      );
+
+      return itemLines;
+    }),
     `Total: ${formatPrice(items.reduce((sum, i) => sum + i.price * i.quantity, 0))}`,
   ];
   return lines.join("\n");
