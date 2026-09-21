@@ -20,21 +20,20 @@ create policy "Lectura pública de productos"
   on products for select
   using (true);
 
--- Solo usuarios autenticados (la dueña, vía /admin) pueden crear/editar/borrar
-create policy "Escritura solo autenticados"
+-- El login de /admin es propio de la app (usuario/clave, ver lib/admin-auth.ts),
+-- no usa Supabase Auth, así que las escrituras se permiten con la clave anon
+-- (la ruta /admin ya está protegida por el login antes de llegar aquí).
+create policy "Escritura de productos"
   on products for insert
-  to authenticated
   with check (true);
 
-create policy "Actualización solo autenticados"
+create policy "Actualización de productos"
   on products for update
-  to authenticated
   using (true)
   with check (true);
 
-create policy "Borrado solo autenticados"
+create policy "Borrado de productos"
   on products for delete
-  to authenticated
   using (true);
 
 -- Storage: bucket público para fotos de producto.
@@ -49,12 +48,10 @@ create policy "Lectura pública de imágenes"
   on storage.objects for select
   using (bucket_id = 'product-images');
 
-create policy "Subida de imágenes solo autenticados"
+create policy "Subida de imágenes"
   on storage.objects for insert
-  to authenticated
   with check (bucket_id = 'product-images');
 
-create policy "Borrado de imágenes solo autenticados"
+create policy "Borrado de imágenes"
   on storage.objects for delete
-  to authenticated
   using (bucket_id = 'product-images');
