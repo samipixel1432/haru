@@ -15,12 +15,18 @@ export default async function AdminDashboard() {
           <h1 className="font-serif-display text-2xl text-ink">Panel de productos</h1>
           <p className="text-sm text-ink/50">{products.length} producto(s) publicados</p>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           <Link
             href="/admin/productos/nuevo"
             className="border border-gold bg-gold px-4 py-2 text-xs tracking-[0.15em] text-white hover:opacity-90"
           >
             + NUEVO PRODUCTO
+          </Link>
+          <Link
+            href="/admin/productos/lote"
+            className="border border-gold/50 px-4 py-2 text-xs tracking-[0.15em] text-ink hover:border-gold hover:bg-gold hover:text-white"
+          >
+            CARGA MASIVA
           </Link>
           <SignOutButton />
         </div>
