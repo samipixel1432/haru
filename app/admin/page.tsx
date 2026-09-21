@@ -2,8 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getProducts } from "@/lib/products";
 import { formatPrice } from "@/lib/whatsapp";
-import { DeleteProductButton } from "@/components/admin/DeleteProductButton";
-import { SignOutButton } from "@/components/admin/SignOutButton";
+import { DeleteProductButton, SignOutButton } from "@/components/admin/AdminControls";
 
 export default async function AdminDashboard() {
   const products = await getProducts();

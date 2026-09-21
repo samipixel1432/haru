@@ -1,4 +1,4 @@
-import { BulkProductForm } from "@/components/admin/BulkProductForm";
+import { BulkProductForm } from "@/components/admin/ProductForms";
 
 export default function BulkProductsPage() {
   return (

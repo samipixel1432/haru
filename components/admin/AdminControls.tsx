@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { deleteProduct } from "@/app/admin/actions";
+import { deleteProduct, signOut } from "@/app/admin/actions";
 
 export function DeleteProductButton({ id, name }: { id: string; name: string }) {
   const [isPending, startTransition] = useTransition();
@@ -39,5 +39,21 @@ export function DeleteProductButton({ id, name }: { id: string; name: string }) 
         No
       </button>
     </span>
+  );
+}
+
+export function SignOutButton() {
+  const router = useRouter();
+  return (
+    <button
+      onClick={async () => {
+        await signOut();
+        router.push("/admin/login");
+        router.refresh();
+      }}
+      className="text-xs text-ink/50 underline hover:text-gold"
+    >
+      Cerrar sesión
+    </button>
   );
 }

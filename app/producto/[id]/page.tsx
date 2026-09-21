@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProduct } from "@/lib/products";
 import { formatPrice } from "@/lib/whatsapp";
-import { ProductDetailActions } from "@/components/ProductDetailActions";
+import { ProductDetailActions } from "@/components/ProductCard";
 import { CATEGORIES } from "@/lib/types";
 
 export default async function ProductPage({
