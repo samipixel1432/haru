@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Product, CATEGORIES } from "@/lib/types";
+import { Product, CATEGORIES, FAMILIES, LONGEVITY_OPTIONS, OCCASION_OPTIONS } from "@/lib/types";
 import { createClient } from "@/lib/supabase/client";
 import { createProduct, updateProduct, ProductInput } from "@/app/admin/actions";
 
@@ -18,6 +18,13 @@ export function ProductForm({ product }: { product?: Product }) {
   const [stock, setStock] = useState(product?.stock?.toString() ?? "0");
   const [featured, setFeatured] = useState(product?.featured ?? false);
   const [imageUrl, setImageUrl] = useState(product?.image_url ?? "");
+  const [family, setFamily] = useState(product?.family ?? "");
+  const [longevity, setLongevity] = useState(product?.longevity ?? "");
+  const [occasion, setOccasion] = useState(product?.occasion ?? "");
+  const [sizeMl, setSizeMl] = useState(product?.size_ml?.toString() ?? "");
+  const [notesTop, setNotesTop] = useState(product?.notes_top ?? "");
+  const [notesHeart, setNotesHeart] = useState(product?.notes_heart ?? "");
+  const [notesBase, setNotesBase] = useState(product?.notes_base ?? "");
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -66,6 +73,26 @@ export function ProductForm({ product }: { product?: Product }) {
       stock: Number.isNaN(stockNumber) ? 0 : stockNumber,
       featured,
     };
+
+    if (category === "perfumes") {
+      const sizeNumber = Number(sizeMl);
+      const extras: Partial<ProductInput> = {
+        family: family || null,
+        longevity: longevity || null,
+        occasion: occasion || null,
+        size_ml: sizeMl && !Number.isNaN(sizeNumber) ? sizeNumber : null,
+        notes_top: notesTop.trim() || null,
+        notes_heart: notesHeart.trim() || null,
+        notes_base: notesBase.trim() || null,
+      };
+      // Solo enviamos un campo vacío si antes tenía valor (para poder borrarlo).
+      // Así el panel sigue funcionando aunque la base de datos aún no tenga estas columnas.
+      for (const key of Object.keys(extras) as (keyof typeof extras)[]) {
+        const value = extras[key];
+        const hadValue = Boolean(product?.[key]);
+        if (value !== null || hadValue) (input as Record<string, unknown>)[key] = value;
+      }
+    }
 
     setSaving(true);
     const result = isEdit ? await updateProduct(product!.id, input) : await createProduct(input);
@@ -154,6 +181,83 @@ export function ProductForm({ product }: { product?: Product }) {
           ))}
         </select>
       </div>
+
+      {category === "perfumes" && (
+        <fieldset className="flex flex-col gap-5 border border-gold/30 p-4">
+          <legend className="px-2 text-xs tracking-[0.1em] text-ink/60">
+            Ficha olfativa (aparece en la página del producto y en el test)
+          </legend>
+          <p className="-mt-2 text-xs text-ink/50">
+            Requiere haber corrido la migración SQL de supabase/migration-002-ficha-olfativa.sql.
+          </p>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="text-xs tracking-[0.1em] text-ink/60">Familia olfativa</label>
+              <select
+                value={family}
+                onChange={(e) => setFamily(e.target.value)}
+                className="mt-1 w-full border border-gold/30 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+              >
+                <option value="">—</option>
+                {FAMILIES.map((f) => (
+                  <option key={f.slug} value={f.slug}>{f.label}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="text-xs tracking-[0.1em] text-ink/60">Tamaño (ml)</label>
+              <input
+                type="number"
+                min={1}
+                value={sizeMl}
+                onChange={(e) => setSizeMl(e.target.value)}
+                className="mt-1 w-full border border-gold/30 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+              />
+            </div>
+            <div>
+              <label className="text-xs tracking-[0.1em] text-ink/60">Duración</label>
+              <select
+                value={longevity}
+                onChange={(e) => setLongevity(e.target.value)}
+                className="mt-1 w-full border border-gold/30 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+              >
+                <option value="">—</option>
+                {LONGEVITY_OPTIONS.map((o) => (
+                  <option key={o} value={o}>{o}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="text-xs tracking-[0.1em] text-ink/60">Ocasión</label>
+              <select
+                value={occasion}
+                onChange={(e) => setOccasion(e.target.value)}
+                className="mt-1 w-full border border-gold/30 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+              >
+                <option value="">—</option>
+                {OCCASION_OPTIONS.map((o) => (
+                  <option key={o} value={o}>{o}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          {[
+            { label: "Notas de salida", value: notesTop, set: setNotesTop, ph: "Limón, bergamota…" },
+            { label: "Notas de corazón", value: notesHeart, set: setNotesHeart, ph: "Rosa, jazmín…" },
+            { label: "Notas de fondo", value: notesBase, set: setNotesBase, ph: "Ámbar, vainilla…" },
+          ].map((n) => (
+            <div key={n.label}>
+              <label className="text-xs tracking-[0.1em] text-ink/60">{n.label}</label>
+              <input
+                value={n.value}
+                onChange={(e) => n.set(e.target.value)}
+                placeholder={n.ph}
+                className="mt-1 w-full border border-gold/30 bg-white px-4 py-3 text-sm outline-none focus:border-gold"
+              />
+            </div>
+          ))}
+        </fieldset>
+      )}
 
       <label className="flex items-center gap-2 text-sm text-ink/70">
         <input

@@ -1,88 +1,118 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { CATEGORIES } from "@/lib/types";
 import { useCart } from "@/lib/cart-context";
+import { BagIcon, CloseIcon, MenuIcon, LotusMark } from "@/components/Icons";
+
+const LINKS = [
+  ...CATEGORIES.map((c) => ({ href: `/categoria/${c.slug}`, label: c.label })),
+  { href: "/encuentra-tu-aroma", label: "Encuentra tu aroma" },
+];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const { totalItems } = useCart();
+  const { totalItems, openDrawer } = useCart();
 
-  const links = [
-    { href: "/", label: "Inicio" },
-    ...CATEGORIES.map((c) => ({ href: `/categoria/${c.slug}`, label: c.label })),
-  ];
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gold/20 bg-cream/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
-        <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <Image
-            src="/brand/logo-white-gold-ring.jpeg"
-            alt="Haru Boutique"
-            width={44}
-            height={44}
-            className="rounded-full"
-            priority
-          />
-          <span className="font-serif-display text-xl tracking-wide-plus text-ink">HARU</span>
-        </Link>
-
-        <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
+    <>
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/92 backdrop-blur-md">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-5 py-3 md:px-8">
+        <nav aria-label="Principal" className="hidden items-center gap-8 lg:flex">
+          {LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm tracking-wide transition-colors hover:text-gold ${
-                pathname === link.href ? "text-gold" : "text-ink/80"
-              }`}
+              aria-current={pathname === link.href ? "page" : undefined}
+              className={`label link-u py-2 ${pathname === link.href ? "text-bronze" : "text-ink"}`}
             >
               {link.label}
             </Link>
           ))}
         </nav>
+        <button
+          className="-ml-2 flex h-11 w-11 items-center justify-center lg:hidden"
+          aria-label="Abrir menú"
+          aria-expanded={open}
+          onClick={() => setOpen(true)}
+        >
+          <MenuIcon />
+        </button>
 
-        <div className="flex items-center gap-4">
-          <Link href="/carrito" className="relative flex items-center gap-1 text-ink/80 hover:text-gold">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-6 w-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.994-4.693 2.602-7.152.075-.306-.156-.598-.47-.598H5.106M7.5 14.25L5.106 5.272M7.5 14.25L6.75 17.25m6.75-14.25l-.75 3M15.75 3l-.75 3" />
-            </svg>
+        <Link href="/" className="flex flex-col items-center leading-none" aria-label="Haru, inicio">
+          <span className="font-display text-[28px] tracking-[0.32em] pl-[0.32em] md:text-[32px]">HARU</span>
+        </Link>
+
+        <div className="flex items-center justify-end">
+          <button
+            onClick={openDrawer}
+            className="label relative -mr-2 flex h-11 items-center gap-2 px-2"
+            aria-label={`Abrir carrito, ${totalItems} producto${totalItems === 1 ? "" : "s"}`}
+          >
+            <span className="hidden lg:inline">Carrito</span>
+            <BagIcon />
             {totalItems > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[11px] font-medium text-white">
+              <span className="flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-ink px-1 text-[10px] font-medium text-paper">
                 {totalItems}
               </span>
             )}
-          </Link>
-          <button
-            className="md:hidden"
-            aria-label="Abrir menú"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-6 w-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
-            </svg>
           </button>
         </div>
       </div>
+    </header>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-gold/20 bg-cream px-5 py-3 md:hidden">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
+        <div
+          className="on-dark fixed inset-0 z-50 flex flex-col bg-night px-6 py-4 text-paper"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menú"
+        >
+          <div className="flex items-center justify-between">
+            <span className="font-display text-[28px] tracking-[0.32em]">HARU</span>
+            <button
+              className="-mr-2 flex h-11 w-11 items-center justify-center"
+              aria-label="Cerrar menú"
               onClick={() => setOpen(false)}
-              className="py-2 text-sm tracking-wide text-ink/80 hover:text-gold"
             >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+              <CloseIcon />
+            </button>
+          </div>
+          <nav aria-label="Menú móvil" className="mt-14 flex flex-1 flex-col gap-2">
+            {[{ href: "/", label: "Inicio" }, ...LINKS].map((link, i) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="rise font-display border-b border-paper/10 py-4 text-[34px] leading-tight"
+                style={{ animationDelay: `${i * 70}ms` }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="pb-4 text-paper/60">
+            <LotusMark className="h-5 w-8" />
+          </div>
+        </div>
       )}
-    </header>
+    </>
   );
 }

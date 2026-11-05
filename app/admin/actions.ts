@@ -14,6 +14,13 @@ export type ProductInput = {
   image_url: string | null;
   stock: number;
   featured: boolean;
+  family?: string | null;
+  notes_top?: string | null;
+  notes_heart?: string | null;
+  notes_base?: string | null;
+  longevity?: string | null;
+  occasion?: string | null;
+  size_ml?: number | null;
 };
 
 export async function createProduct(input: ProductInput) {

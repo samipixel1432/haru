@@ -1,51 +1,60 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Product } from "@/lib/types";
+import { Product, getFamilyLabel } from "@/lib/types";
 import { formatPrice } from "@/lib/whatsapp";
 import { useCart } from "@/lib/cart-context";
+import { ProductImage } from "@/components/ProductImage";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
   const { addItem } = useCart();
+  const soldOut = product.stock <= 0;
+  const family = getFamilyLabel(product.family);
+  const notes = [product.notes_top, product.notes_heart].filter(Boolean).join(" · ");
 
   return (
-    <div className="group flex flex-col">
-      <Link href={`/producto/${product.id}`} className="block overflow-hidden bg-white">
-        <div className="relative aspect-square w-full overflow-hidden">
-          {product.image_url ? (
-            <Image
-              src={product.image_url}
-              alt={product.name}
-              fill
-              sizes="(max-width: 768px) 50vw, 25vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-cream to-gold/10">
-              <svg viewBox="0 0 64 40" className="h-10 w-16 text-gold/50" fill="none" stroke="currentColor" strokeWidth="1.2">
-                <path d="M32 6 C36 14 36 22 32 30 C28 22 28 14 32 6 Z" />
-                <path d="M20 12 C24 18 26 24 26 30 C19 27 15 21 14 15 C16 13 18 12 20 12 Z" />
-                <path d="M44 12 C40 18 38 24 38 30 C45 27 49 21 50 15 C48 13 46 12 44 12 Z" />
-              </svg>
-            </div>
-          )}
+    <article className="group flex flex-col">
+      <Link
+        href={`/producto/${product.id}`}
+        className="relative block aspect-[4/5] overflow-hidden bg-sand"
+        aria-label={product.name}
+      >
+        <div className="absolute inset-0 transition-transform duration-[900ms] [transition-timing-function:var(--ease-out)] group-hover:scale-[1.04]">
+          <ProductImage
+            src={product.image_url}
+            alt={product.name}
+            sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            priority={priority}
+          />
         </div>
+        {soldOut && (
+          <span className="label absolute left-3 top-3 bg-paper px-2 py-1 text-[10px]">Agotado</span>
+        )}
+        {!soldOut && product.stock <= 3 && (
+          <span className="label absolute left-3 top-3 bg-paper px-2 py-1 text-[10px] text-bronze">
+            Últimas {product.stock}
+          </span>
+        )}
       </Link>
-      <div className="pt-3 text-center">
-        <Link href={`/producto/${product.id}`}>
-          <h3 className="font-serif-display text-base text-ink transition-colors hover:text-gold">
-            {product.name}
-          </h3>
+
+      <div className="flex flex-1 flex-col pt-4">
+        {family && <p className="label text-[10px] text-bronze">{family}</p>}
+        <Link href={`/producto/${product.id}`} className="mt-1">
+          <h3 className="font-display text-[22px] leading-tight md:text-2xl">{product.name}</h3>
         </Link>
-        <p className="mt-1 text-sm text-ink/70">{formatPrice(product.price)}</p>
-        <button
-          onClick={() => addItem(product)}
-          className="mt-3 w-full border border-gold/50 py-2 text-xs tracking-[0.2em] text-ink transition-colors hover:border-gold hover:bg-gold hover:text-white"
-        >
-          AGREGAR
-        </button>
+        {notes && <p className="mt-1.5 line-clamp-2 text-[13px] leading-snug text-muted">{notes}</p>}
+        <div className="mt-auto flex items-center justify-between pt-4">
+          <p className="text-sm tabular-nums">{formatPrice(product.price)}</p>
+          <button
+            onClick={() => addItem(product)}
+            disabled={soldOut}
+            className="label link-u py-2 text-[10px] disabled:opacity-40"
+            aria-label={`Agregar ${product.name} al carrito`}
+          >
+            {soldOut ? "No disponible" : "Agregar +"}
+          </button>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }

@@ -13,6 +13,9 @@ type CartContextType = {
   clearCart: () => void;
   totalItems: number;
   totalPrice: number;
+  drawerOpen: boolean;
+  openDrawer: () => void;
+  closeDrawer: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -20,6 +23,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [hydrated, setHydrated] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -42,6 +46,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [items, hydrated]);
 
   function addItem(product: Product, quantity = 1) {
+    setDrawerOpen(true);
     setItems((prev) => {
       const existing = prev.find((i) => i.id === product.id);
       if (existing) {
@@ -85,7 +90,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   return (
     <CartContext.Provider
-      value={{ items, addItem, removeItem, updateQuantity, clearCart, totalItems, totalPrice }}
+      value={{
+        items,
+        addItem,
+        removeItem,
+        updateQuantity,
+        clearCart,
+        totalItems,
+        totalPrice,
+        drawerOpen,
+        openDrawer: () => setDrawerOpen(true),
+        closeDrawer: () => setDrawerOpen(false),
+      }}
     >
       {children}
     </CartContext.Provider>

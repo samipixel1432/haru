@@ -4,6 +4,8 @@ import { Product } from "./types";
  * Catálogo de muestra usado solo mientras Supabase no está configurado
  * (ver lib/products.ts). Permite previsualizar el diseño sin base de datos.
  */
+const now = new Date().toISOString();
+
 export const DEMO_PRODUCTS: Product[] = [
   {
     id: "demo-1",
@@ -14,7 +16,14 @@ export const DEMO_PRODUCTS: Product[] = [
     image_url: null,
     stock: 8,
     featured: true,
-    created_at: new Date().toISOString(),
+    created_at: now,
+    family: "amaderado",
+    notes_top: "Limón, bergamota, grosella",
+    notes_heart: "Abedul, rosa, jazmín",
+    notes_base: "Ámbar gris, almizcle, vainilla",
+    longevity: "Larga (8 h o más)",
+    occasion: "Noche",
+    size_ml: 105,
   },
   {
     id: "demo-2",
@@ -23,9 +32,16 @@ export const DEMO_PRODUCTS: Product[] = [
     price: 145000,
     category: "perfumes",
     image_url: null,
-    stock: 5,
+    stock: 3,
     featured: true,
-    created_at: new Date().toISOString(),
+    created_at: now,
+    family: "ambar",
+    notes_top: "Canela, nuez moscada, bergamota",
+    notes_heart: "Dátil, praliné, flores blancas",
+    notes_base: "Vainilla, tonka, haba, benjuí",
+    longevity: "Larga (8 h o más)",
+    occasion: "Noche",
+    size_ml: 100,
   },
   {
     id: "demo-3",
@@ -36,7 +52,14 @@ export const DEMO_PRODUCTS: Product[] = [
     image_url: null,
     stock: 6,
     featured: false,
-    created_at: new Date().toISOString(),
+    created_at: now,
+    family: "floral",
+    notes_top: "Champaña rosa, maracuyá",
+    notes_heart: "Rosa, gardenia, flor de naranjo",
+    notes_base: "Almizcle, ámbar, sándalo",
+    longevity: "Moderada (5–7 h)",
+    occasion: "Día",
+    size_ml: 80,
   },
   {
     id: "demo-4",
@@ -47,7 +70,7 @@ export const DEMO_PRODUCTS: Product[] = [
     image_url: null,
     stock: 12,
     featured: true,
-    created_at: new Date().toISOString(),
+    created_at: now,
   },
   {
     id: "demo-5",
@@ -58,7 +81,7 @@ export const DEMO_PRODUCTS: Product[] = [
     image_url: null,
     stock: 20,
     featured: false,
-    created_at: new Date().toISOString(),
+    created_at: now,
   },
   {
     id: "demo-6",
@@ -69,6 +92,6 @@ export const DEMO_PRODUCTS: Product[] = [
     image_url: null,
     stock: 15,
     featured: true,
-    created_at: new Date().toISOString(),
+    created_at: now,
   },
 ];

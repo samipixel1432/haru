@@ -1,31 +1,69 @@
+import Image from "next/image";
 import Link from "next/link";
-import { LotusDivider } from "./LotusDivider";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
+import { FAMILIES } from "@/lib/types";
+import { WhatsappIcon } from "@/components/Icons";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-gold/20 bg-ink text-cream/80">
-      <div className="mx-auto max-w-6xl px-5 py-12 text-center">
-        <p className="font-serif-display text-2xl tracking-wide-plus text-cream">HARU</p>
-        <p className="mt-1 text-xs tracking-[0.25em] text-gold">BOUTIQUE</p>
-        <LotusDivider className="my-6" />
-        <p className="mx-auto max-w-md text-sm text-cream/60">
-          Elegancia que trasciende. Perfumes, lociones y joyería seleccionados con cuidado.
-        </p>
-        <div className="mt-6 flex justify-center gap-6 text-sm">
-          <Link href="/categoria/perfumes" className="hover:text-gold">Perfumes</Link>
-          <Link href="/categoria/joyeria" className="hover:text-gold">Joyería</Link>
+    <footer className="on-dark border-t border-paper/10 bg-night text-paper">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:px-8">
+        <div>
+          <Image
+            src="/brand/logo-black-gold-ring.jpeg"
+            alt="Haru Boutique"
+            width={72}
+            height={72}
+            className="rounded-full"
+          />
+          <p className="font-display mt-6 max-w-xs text-2xl leading-snug text-paper/90">
+            Lo que dejas al pasar.
+          </p>
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gold"
+            className="btn btn-ghost mt-6"
           >
-            WhatsApp
+            <WhatsappIcon className="h-4 w-4" />
+            Escríbenos
           </a>
         </div>
-        <p className="mt-8 text-xs text-cream/40">
-          © {new Date().getFullYear()} Haru Boutique. Todos los derechos reservados.
+
+        <nav aria-label="Tienda">
+          <p className="label text-paper/50">Tienda</p>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li><Link href="/categoria/perfumes" className="link-u">Perfumes y Lociones</Link></li>
+            <li><Link href="/categoria/joyeria" className="link-u">Joyería</Link></li>
+            <li><Link href="/encuentra-tu-aroma" className="link-u">Encuentra tu aroma</Link></li>
+            <li><Link href="/carrito" className="link-u">Carrito</Link></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Familias olfativas">
+          <p className="label text-paper/50">Por familia</p>
+          <ul className="mt-4 space-y-3 text-sm">
+            {FAMILIES.map((f) => (
+              <li key={f.slug}>
+                <Link href={`/categoria/perfumes?familia=${f.slug}`} className="link-u">
+                  {f.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div>
+          <p className="label text-paper/50">Ayuda</p>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li><Link href="/#preguntas" className="link-u">Preguntas frecuentes</Link></li>
+            <li><Link href="/#como-funciona" className="link-u">Cómo comprar</Link></li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-paper/10">
+        <p className="label mx-auto max-w-7xl px-5 py-5 text-[10px] text-paper/45 md:px-8">
+          © {new Date().getFullYear()} Haru Boutique · Todos los derechos reservados
         </p>
       </div>
     </footer>

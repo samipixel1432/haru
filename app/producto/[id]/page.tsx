@@ -1,10 +1,30 @@
-import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProduct } from "@/lib/products";
+import { getProduct, getProducts } from "@/lib/products";
 import { formatPrice } from "@/lib/whatsapp";
 import { ProductDetailActions } from "@/components/ProductDetailActions";
-import { CATEGORIES } from "@/lib/types";
+import { NotesPyramid } from "@/components/NotesPyramid";
+import { ProductCard } from "@/components/ProductCard";
+import { ProductImage } from "@/components/ProductImage";
+import { Faq } from "@/components/Faq";
+import { CATEGORIES, getFamilyLabel } from "@/lib/types";
+import { FAQ, TRUST_POINTS } from "@/lib/store-config";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const product = await getProduct(id);
+  if (!product) return {};
+  return {
+    title: product.name,
+    description: product.description ?? `${product.name} en Haru.`,
+    openGraph: product.image_url ? { images: [product.image_url] } : undefined,
+  };
+}
 
 export default async function ProductPage({
   params,
@@ -16,55 +36,116 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const category = CATEGORIES.find((c) => c.slug === product.category);
+  const family = getFamilyLabel(product.family);
+  const related = (await getProducts(product.category)).filter((p) => p.id !== product.id).slice(0, 4);
+
+  const specs = [
+    { k: "Familia", v: family },
+    { k: "Duración", v: product.longevity },
+    { k: "Ocasión", v: product.occasion },
+    { k: "Tamaño", v: product.size_ml ? `${product.size_ml} ml` : null },
+  ].filter((s) => s.v);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description ?? undefined,
+    image: product.image_url ?? undefined,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "COP",
+      price: product.price,
+      availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+    },
+  };
 
   return (
-    <div className="mx-auto max-w-5xl px-5 py-16">
-      <nav className="mb-8 text-xs text-ink/50">
-        <Link href="/" className="hover:text-gold">Inicio</Link>
-        {category && (
-          <>
-            {" / "}
-            <Link href={`/categoria/${category.slug}`} className="hover:text-gold">
-              {category.label}
-            </Link>
-          </>
-        )}
-        {" / "}
-        <span className="text-ink/70">{product.name}</span>
-      </nav>
+    <div className="pb-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div className="relative aspect-square w-full overflow-hidden bg-white">
-          {product.image_url ? (
-            <Image
+      <div className="mx-auto max-w-7xl px-5 pt-8 md:px-8 md:pt-12">
+        <nav aria-label="Ruta" className="label text-[10px] text-muted">
+          <Link href="/" className="link-u">Inicio</Link>
+          {category && (
+            <>
+              {" / "}
+              <Link href={`/categoria/${category.slug}`} className="link-u">{category.label}</Link>
+            </>
+          )}
+          {" / "}
+          <span className="text-ink">{product.name}</span>
+        </nav>
+
+        <div className="mt-8 grid gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-sand md:sticky md:top-28 md:self-start">
+            <ProductImage
               src={product.image_url}
               alt={product.name}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 55vw"
               priority
             />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-cream to-gold/10">
-              <svg viewBox="0 0 64 40" className="h-16 w-28 text-gold/50" fill="none" stroke="currentColor" strokeWidth="1.2">
-                <path d="M32 6 C36 14 36 22 32 30 C28 22 28 14 32 6 Z" />
-                <path d="M20 12 C24 18 26 24 26 30 C19 27 15 21 14 15 C16 13 18 12 20 12 Z" />
-                <path d="M44 12 C40 18 38 24 38 30 C45 27 49 21 50 15 C48 13 46 12 44 12 Z" />
-              </svg>
-            </div>
-          )}
-        </div>
+          </div>
 
-        <div>
-          <p className="text-xs tracking-[0.25em] text-gold">{category?.label ?? product.category}</p>
-          <h1 className="font-serif-display mt-2 text-3xl text-ink">{product.name}</h1>
-          <p className="mt-4 text-xl text-ink/80">{formatPrice(product.price)}</p>
-          {product.description && (
-            <p className="mt-6 text-sm leading-relaxed text-ink/60">{product.description}</p>
-          )}
-          <ProductDetailActions product={product} />
+          <div>
+            {family && <p className="label text-bronze">{family}</p>}
+            <h1 className="font-display mt-3 text-5xl leading-[0.98] md:text-7xl">{product.name}</h1>
+            <p className="mt-5 text-2xl tabular-nums">{formatPrice(product.price)}</p>
+            {product.description && (
+              <p className="mt-6 max-w-md text-[17px] leading-relaxed text-smoke">{product.description}</p>
+            )}
+
+            <ProductDetailActions product={product} />
+
+            <NotesPyramid product={product} />
+
+            {specs.length > 0 && (
+              <dl className="mt-10 grid grid-cols-2 border-t border-line">
+                {specs.map((s, i) => (
+                  <div
+                    key={s.k}
+                    className={`border-b border-line py-4 ${i % 2 === 0 ? "pr-4" : "border-l pl-4"}`}
+                  >
+                    <dt className="label text-[10px] text-muted">{s.k}</dt>
+                    <dd className="mt-1 text-sm">{s.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+
+            <ul className="mt-10 space-y-4 border-t border-line pt-8">
+              {TRUST_POINTS.slice(0, 3).map((t) => (
+                <li key={t.title} className="flex gap-4">
+                  <span className="mt-2 h-px w-6 flex-shrink-0 bg-bronze" aria-hidden="true" />
+                  <p className="text-sm text-smoke">
+                    <span className="text-ink">{t.title}.</span> {t.text}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
+
+      <section className="mx-auto mt-24 max-w-7xl px-5 md:mt-32 md:px-8">
+        <p className="label text-bronze">Preguntas frecuentes</p>
+        <div className="mt-6 max-w-3xl">
+          <Faq items={FAQ.slice(0, 4)} />
+        </div>
+      </section>
+
+      {related.length > 0 && (
+        <section className="mx-auto mt-24 max-w-7xl px-5 md:mt-32 md:px-8">
+          <h2 className="font-display text-4xl leading-none md:text-6xl">
+            También te <em>puede gustar</em>
+          </h2>
+          <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-12 md:grid-cols-4 md:gap-x-6">
+            {related.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
