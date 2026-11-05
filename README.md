@@ -23,6 +23,16 @@ puedas ver el diseño — no se guardan cambios reales, pero el panel `/admin` s
 - Para cambiar el usuario o la contraseña, define las variables de entorno
   `ADMIN_USERNAME` y `ADMIN_PASSWORD` (ver `.env.local.example`).
 
+## Ficha olfativa de los perfumes (opcional)
+
+Para guardar familia olfativa, notas de salida/corazón/fondo, duración, ocasión y tamaño de
+cada perfume (se muestran en la página del producto y alimentan el test "Encuentra tu aroma"),
+corre una vez `supabase/migration-002-ficha-olfativa.sql` en el SQL Editor de Supabase. Sin
+esa migración el sitio funciona igual, solo que esos campos no se guardan.
+
+Textos editables de la tienda (confianza, preguntas frecuentes, envío gratis): `lib/store-config.ts`.
+Reseñas reales: `lib/reviews.ts`. Fotos editoriales: `lib/site-images.ts` y `design/image-prompts.md`.
+
 ## Configurar Supabase (para guardar productos de verdad)
 
 1. Crea una cuenta y un proyecto gratis en [supabase.com](https://supabase.com).
