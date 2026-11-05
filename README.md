@@ -12,7 +12,7 @@ npm run dev
 ```
 
 Abre [http://localhost:3000](http://localhost:3000). Mientras no configures Supabase (ver
-abajo), el sitio funciona con 6 productos de ejemplo (`lib/demo-products.ts`) solo para que
+abajo), el sitio funciona con 6 productos de ejemplo (`lib/products.ts`) solo para que
 puedas ver el diseño — no se guardan cambios reales, pero el panel `/admin` sí pide login.
 
 ## Panel de administración
