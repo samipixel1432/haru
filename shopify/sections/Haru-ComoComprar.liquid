@@ -1,0 +1,184 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-como{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --color-parrafo: {{ section.settings.color_parrafo }} !important;
+    --color-linea: color-mix(in srgb, {{ section.settings.color_texto }} 14%, transparent) !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    --tamano-etiqueta: {{ section.settings.tamano_etiqueta_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    scroll-margin-top: 96px !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-como :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-como *,
+  #shopify-section-{{ section.id }} .haru-como *::before,
+  #shopify-section-{{ section.id }} .haru-como *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-como__contenido{
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-como__etiqueta{
+    margin: 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-como__pasos{
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    margin: 32px 0 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    border-top: 1px solid var(--color-linea) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-como__paso{
+    margin: 0 !important;
+    padding: 32px 0 !important;
+    list-style: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-como__paso + .haru-como__paso{ border-top: 1px solid var(--color-linea) !important; }
+  #shopify-section-{{ section.id }} .haru-como__numero{
+    display: block !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-como__titulo{
+    margin: 12px 0 0 !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-como__texto{
+    max-width: 320px !important;
+    margin: 12px 0 0 !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+    color: var(--color-parrafo) !important;
+  }
+  @supports (animation-timeline: view()){
+    #shopify-section-{{ section.id }} .haru-como__reveal{
+      animation: haru-como-reveal linear both !important;
+      animation-timeline: view() !important;
+      animation-range: entry 5% entry 45% !important;
+    }
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-como{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      --tamano-etiqueta: {{ section.settings.tamano_etiqueta }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-como__contenido{ padding-inline: 32px !important; }
+    #shopify-section-{{ section.id }} .haru-como__pasos{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+    #shopify-section-{{ section.id }} .haru-como__paso{ padding: 40px 32px !important; }
+    #shopify-section-{{ section.id }} .haru-como__paso:first-child{ padding-left: 0 !important; }
+    #shopify-section-{{ section.id }} .haru-como__paso + .haru-como__paso{
+      border-top: 0 !important;
+      border-left: 1px solid var(--color-linea) !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #shopify-section-{{ section.id }} .haru-como__reveal{ animation: none !important; }
+  }
+  @keyframes haru-como-reveal{
+    from{ opacity: 0; transform: translateY(24px); }
+    to{ opacity: 1; transform: none; }
+  }
+{%- endstyle -%}
+
+<section class="haru-como haru-como-{{ section.id }}"{% if section.settings.id_ancla != blank %} id="{{ section.settings.id_ancla | handleize }}"{% endif %}>
+  <div class="haru-como__contenido">
+    {%- if section.settings.etiqueta != blank -%}
+      <p class="haru-como__etiqueta haru-como__reveal">{{ section.settings.etiqueta }}</p>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      <ol class="haru-como__pasos">
+        {%- for block in section.blocks -%}
+          <li class="haru-como__paso haru-como__reveal" {{ block.shopify_attributes }}>
+            <span class="haru-como__numero">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <p class="haru-como__titulo">{{ block.settings.titulo }}</p>
+            <p class="haru-como__texto">{{ block.settings.texto }}</p>
+          </li>
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Haru Cómo comprar",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "etiqueta", "label": "Etiqueta superior", "default": "Cómo comprar" },
+    { "type": "text", "id": "id_ancla", "label": "Ancla de la sección", "default": "como-funciona", "info": "Para enlazar con #como-funciona" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#f2ede4" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#16130f" },
+    { "type": "color", "id": "color_parrafo", "label": "Texto de los pasos", "default": "#3a352d" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#7a5c3c" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño del paso (escritorio)", "min": 20, "max": 70, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño del paso (móvil)", "min": 18, "max": 60, "step": 2, "unit": "px", "default": 30 },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "tamano_etiqueta", "label": "Tamaño de etiquetas (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_etiqueta_movil", "label": "Tamaño de etiquetas (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 144 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "blocks": [
+    {
+      "type": "paso",
+      "name": "Paso",
+      "settings": [
+        { "type": "text", "id": "titulo", "label": "Título", "default": "Elige" },
+        { "type": "textarea", "id": "texto", "label": "Texto", "default": "Explora por familia olfativa o haz el test de 1 minuto." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Haru Cómo comprar",
+      "blocks": [
+        { "type": "paso", "settings": { "titulo": "Elige", "texto": "Explora por familia olfativa o haz el test de 1 minuto." } },
+        { "type": "paso", "settings": { "titulo": "Envía tu pedido", "texto": "Un solo mensaje de WhatsApp con todo el detalle." } },
+        { "type": "paso", "settings": { "titulo": "Recíbelo", "texto": "Confirmamos disponibilidad, pago y envío contigo." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

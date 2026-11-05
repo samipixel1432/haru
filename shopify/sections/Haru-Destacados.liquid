@@ -1,0 +1,340 @@
+{%- liquid
+  assign coleccion = section.settings.coleccion
+  if coleccion == blank
+    assign coleccion = collections['all']
+  endif
+  assign enlace_todo = section.settings.url_ver_todo
+  if enlace_todo == blank
+    assign enlace_todo = coleccion.url
+  endif
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-dest{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --color-arena: {{ section.settings.color_arena }} !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-producto: {{ section.settings.tamano_producto_movil }}px !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    --tamano-etiqueta: {{ section.settings.tamano_etiqueta_movil }}px !important;
+    --tamano-detalle: {{ section.settings.tamano_detalle_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-dest *,
+  #shopify-section-{{ section.id }} .haru-dest *::before,
+  #shopify-section-{{ section.id }} .haru-dest *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__contenido{
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__cabecera{
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__etiqueta{
+    margin: 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__titulo{
+    margin: 12px 0 0 !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__todo{
+    display: none !important;
+    align-items: center !important;
+    min-height: 44px !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__todo,
+  #shopify-section-{{ section.id }} .haru-dest__ver{
+    background-image: linear-gradient(currentColor, currentColor) !important;
+    background-size: 0% 1px !important;
+    background-position: 0 70% !important;
+    background-repeat: no-repeat !important;
+    transition: background-size .4s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__todo:hover,
+  #shopify-section-{{ section.id }} .haru-dest__todo:focus-visible,
+  #shopify-section-{{ section.id }} .haru-dest__ver:hover,
+  #shopify-section-{{ section.id }} .haru-dest__ver:focus-visible{ background-size: 100% 1px !important; }
+  #shopify-section-{{ section.id }} .haru-dest a:focus-visible{
+    outline: 2px solid var(--color-acento) !important;
+    outline-offset: 3px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__grid{
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 48px 16px !important;
+    margin: 40px 0 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__tarjeta{
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__media{
+    position: relative !important;
+    display: block !important;
+    aspect-ratio: 4 / 5 !important;
+    overflow: hidden !important;
+    background: var(--color-arena) !important;
+    text-decoration: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__zoom{
+    position: absolute !important;
+    inset: 0 !important;
+    transition: transform .9s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__tarjeta:hover .haru-dest__zoom{ transform: scale(1.04) !important; }
+  #shopify-section-{{ section.id }} .haru-dest__imagen{
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__ph{
+    position: absolute !important;
+    inset: 0 !important;
+    border: 2px dashed color-mix(in srgb, var(--color-texto) 25%, transparent) !important;
+    background: var(--color-arena) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__aviso{
+    position: absolute !important;
+    left: 12px !important;
+    top: 12px !important;
+    padding: 4px 8px !important;
+    background: var(--color-fondo) !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-detalle) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__cuerpo{
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    padding-top: 16px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__familia{
+    margin: 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-detalle) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__enlace-nombre{
+    display: block !important;
+    margin-top: 4px !important;
+    text-decoration: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__nombre{
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-producto) !important;
+    font-weight: 400 !important;
+    line-height: 1.25 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__pie{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    margin-top: auto !important;
+    padding-top: 8px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__precio{
+    margin: 0 !important;
+    font-size: var(--tamano-texto) !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  #shopify-section-{{ section.id }} .haru-dest__ver{
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 44px !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-detalle) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+  }
+  @supports (animation-timeline: view()){
+    #shopify-section-{{ section.id }} .haru-dest__reveal{
+      animation: haru-dest-reveal linear both !important;
+      animation-timeline: view() !important;
+      animation-range: entry 5% entry 45% !important;
+    }
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-dest{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-producto: {{ section.settings.tamano_producto }}px !important;
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      --tamano-etiqueta: {{ section.settings.tamano_etiqueta }}px !important;
+      --tamano-detalle: {{ section.settings.tamano_detalle }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-dest__contenido{ padding-inline: 32px !important; }
+    #shopify-section-{{ section.id }} .haru-dest__todo{ display: inline-flex !important; }
+    #shopify-section-{{ section.id }} .haru-dest__grid{
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      column-gap: 24px !important;
+      margin-top: 56px !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #shopify-section-{{ section.id }} .haru-dest__reveal{ animation: none !important; }
+    #shopify-section-{{ section.id }} .haru-dest__zoom,
+    #shopify-section-{{ section.id }} .haru-dest__todo,
+    #shopify-section-{{ section.id }} .haru-dest__ver{ transition-duration: .01ms !important; }
+  }
+  @keyframes haru-dest-reveal{
+    from{ opacity: 0; transform: translateY(24px); }
+    to{ opacity: 1; transform: none; }
+  }
+{%- endstyle -%}
+
+{%- if coleccion.products.size > 0 -%}
+  <section class="haru-dest haru-dest-{{ section.id }}">
+    <div class="haru-dest__contenido">
+      <div class="haru-dest__cabecera haru-dest__reveal">
+        <div>
+          {%- if section.settings.etiqueta != blank -%}
+            <p class="haru-dest__etiqueta">{{ section.settings.etiqueta }}</p>
+          {%- endif -%}
+          <h2 class="haru-dest__titulo">{{ section.settings.titulo }}</h2>
+        </div>
+        {%- if section.settings.texto_ver_todo != blank -%}
+          <a class="haru-dest__todo" href="{{ enlace_todo }}">{{ section.settings.texto_ver_todo }}</a>
+        {%- endif -%}
+      </div>
+      <ul class="haru-dest__grid">
+        {%- for product in coleccion.products limit: section.settings.max_productos -%}
+          {%- assign familia = product.metafields.custom.familia.value -%}
+          <li class="haru-dest__tarjeta">
+            <a class="haru-dest__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+              <div class="haru-dest__zoom">
+                {%- if product.featured_image != blank -%}
+                  {{ product.featured_image | image_url: width: 900 | image_tag:
+                    widths: '300, 450, 600, 900',
+                    sizes: '(min-width: 990px) 25vw, 50vw',
+                    loading: 'lazy',
+                    alt: product.title,
+                    class: 'haru-dest__imagen' }}
+                {%- else -%}
+                  <div class="haru-dest__ph"></div>
+                {%- endif -%}
+              </div>
+              {%- unless product.available -%}
+                {%- if section.settings.texto_agotado != blank -%}
+                  <span class="haru-dest__aviso">{{ section.settings.texto_agotado }}</span>
+                {%- endif -%}
+              {%- endunless -%}
+            </a>
+            <div class="haru-dest__cuerpo">
+              {%- if familia != blank -%}
+                <p class="haru-dest__familia">{{ familia }}</p>
+              {%- endif -%}
+              <a class="haru-dest__enlace-nombre" href="{{ product.url }}">
+                <h3 class="haru-dest__nombre">{{ product.title }}</h3>
+              </a>
+              <div class="haru-dest__pie">
+                <p class="haru-dest__precio">{{ product.price | money }}</p>
+                {%- if section.settings.texto_producto != blank -%}
+                  <a class="haru-dest__ver" href="{{ product.url }}">{{ section.settings.texto_producto }}</a>
+                {%- endif -%}
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Haru Destacados",
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "etiqueta", "label": "Etiqueta superior", "default": "Selección de la casa" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Para empezar" },
+    { "type": "text", "id": "texto_ver_todo", "label": "Enlace superior: texto", "default": "Ver todo" },
+    { "type": "url", "id": "url_ver_todo", "label": "Enlace superior: destino", "info": "Si se deja vacío, abre la colección elegida" },
+    { "type": "text", "id": "texto_producto", "label": "Enlace de cada producto", "default": "Ver ficha" },
+    { "type": "text", "id": "texto_agotado", "label": "Aviso de producto agotado", "default": "Agotado" },
+    { "type": "header", "content": "Productos" },
+    { "type": "collection", "id": "coleccion", "label": "Colección", "info": "Si se deja vacía, usa todos los productos. La familia se lee del metacampo custom.familia si existe" },
+    { "type": "range", "id": "max_productos", "label": "Cantidad de productos", "min": 2, "max": 12, "step": 1, "default": 8 },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#f2ede4" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#16130f" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#7a5c3c" },
+    { "type": "color", "id": "color_arena", "label": "Fondo de la imagen", "default": "#e9e2d6" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño del título (escritorio)", "min": 24, "max": 100, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño del título (móvil)", "min": 20, "max": 70, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "tamano_producto", "label": "Tamaño del nombre (escritorio)", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 24 },
+    { "type": "range", "id": "tamano_producto_movil", "label": "Tamaño del nombre (móvil)", "min": 14, "max": 36, "step": 1, "unit": "px", "default": 22 },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del precio (escritorio)", "min": 11, "max": 24, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del precio (móvil)", "min": 11, "max": 24, "step": 1, "unit": "px", "default": 13 },
+    { "type": "range", "id": "tamano_etiqueta", "label": "Tamaño de etiquetas (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_etiqueta_movil", "label": "Tamaño de etiquetas (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_detalle", "label": "Tamaño de detalles (escritorio)", "min": 9, "max": 16, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "tamano_detalle_movil", "label": "Tamaño de detalles (móvil)", "min": 9, "max": 16, "step": 1, "unit": "px", "default": 10 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 128 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "presets": [
+    { "name": "Haru Destacados" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,261 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-test{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    --tamano-boton: {{ section.settings.tamano_boton_movil }}px !important;
+    --tamano-etiqueta: {{ section.settings.tamano_etiqueta_movil }}px !important;
+    --tamano-paso: {{ section.settings.tamano_paso_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.margen_superior_movil }}px !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-test *,
+  #shopify-section-{{ section.id }} .haru-test *::before,
+  #shopify-section-{{ section.id }} .haru-test *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__banda{
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__contenido{
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 48px !important;
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__etiqueta{
+    margin: 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__titulo{
+    margin: 16px 0 0 !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: .98 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__titulo em{
+    font-style: italic !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__parrafo{
+    max-width: 448px !important;
+    margin: 24px 0 0 !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+    color: color-mix(in srgb, var(--color-texto) 70%, transparent) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__boton{
+    display: inline-flex !important;
+    min-height: 48px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-top: 36px !important;
+    padding: 0 2.5em !important;
+    border: 1px solid var(--color-texto) !important;
+    background: var(--color-texto) !important;
+    color: var(--color-fondo) !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-boton) !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: background-color .25s cubic-bezier(.22,1,.36,1), color .25s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__boton:hover{
+    background: transparent !important;
+    color: var(--color-texto) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__boton:focus-visible{
+    outline: 2px solid var(--color-acento) !important;
+    outline-offset: 3px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__flecha{
+    width: 16px !important;
+    height: 16px !important;
+    flex: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__pasos{
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    border-top: 1px solid color-mix(in srgb, var(--color-texto) 12%, transparent) !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-texto) 12%, transparent) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__paso{
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 20px !important;
+    margin: 0 !important;
+    padding: 20px 0 !important;
+    list-style: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__paso + .haru-test__paso{
+    border-top: 1px solid color-mix(in srgb, var(--color-texto) 12%, transparent) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__numero{
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-test__texto-paso{
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-paso) !important;
+    font-weight: 400 !important;
+    line-height: 1.25 !important;
+    letter-spacing: -.01em !important;
+  }
+  @supports (animation-timeline: view()){
+    #shopify-section-{{ section.id }} .haru-test__reveal{
+      animation: haru-test-reveal linear both !important;
+      animation-timeline: view() !important;
+      animation-range: entry 5% entry 45% !important;
+    }
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-test{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      --tamano-boton: {{ section.settings.tamano_boton }}px !important;
+      --tamano-etiqueta: {{ section.settings.tamano_etiqueta }}px !important;
+      --tamano-paso: {{ section.settings.tamano_paso }}px !important;
+      padding-top: {{ section.settings.margen_superior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-test__banda{
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-test__contenido{
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      align-items: center !important;
+      gap: 80px !important;
+      padding-inline: 32px !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #shopify-section-{{ section.id }} .haru-test__reveal{ animation: none !important; }
+    #shopify-section-{{ section.id }} .haru-test__boton{ transition-duration: .01ms !important; }
+  }
+  @keyframes haru-test-reveal{
+    from{ opacity: 0; transform: translateY(24px); }
+    to{ opacity: 1; transform: none; }
+  }
+{%- endstyle -%}
+
+<section class="haru-test haru-test-{{ section.id }}">
+  <div class="haru-test__banda">
+    <div class="haru-test__contenido">
+      <div class="haru-test__reveal">
+        {%- if section.settings.etiqueta != blank -%}
+          <p class="haru-test__etiqueta">{{ section.settings.etiqueta }}</p>
+        {%- endif -%}
+        <h2 class="haru-test__titulo">{{ section.settings.titulo }}</h2>
+        {%- if section.settings.parrafo != blank -%}
+          <p class="haru-test__parrafo">{{ section.settings.parrafo }}</p>
+        {%- endif -%}
+        {%- if section.settings.texto_boton != blank -%}
+          <a class="haru-test__boton" href="{{ section.settings.url_boton | default: '#' }}">
+            {{ section.settings.texto_boton }}
+            <svg class="haru-test__flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-5-5 5 5-5 5" /></svg>
+          </a>
+        {%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <ol class="haru-test__pasos haru-test__reveal">
+          {%- for block in section.blocks -%}
+            <li class="haru-test__paso" {{ block.shopify_attributes }}>
+              <span class="haru-test__numero">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+              <span class="haru-test__texto-paso">{{ block.settings.texto }}</span>
+            </li>
+          {%- endfor -%}
+        </ol>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Haru Test",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "etiqueta", "label": "Etiqueta superior", "default": "Encuentra tu aroma" },
+    { "type": "inline_richtext", "id": "titulo", "label": "Título", "default": "¿No sabes <em>cuál</em> elegir?" },
+    { "type": "textarea", "id": "parrafo", "label": "Párrafo", "default": "Cuatro preguntas, un minuto. Te mostramos los aromas que van con tu estilo, tu momento del día y la intensidad que buscas." },
+    { "type": "text", "id": "texto_boton", "label": "Botón: texto", "default": "Hacer el test" },
+    { "type": "url", "id": "url_boton", "label": "Botón: destino", "info": "Página del test de aroma" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo de la banda", "default": "#100e0b" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#f2ede4" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#b89c78" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño del título (escritorio)", "min": 24, "max": 120, "step": 2, "unit": "px", "default": 72 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño del título (móvil)", "min": 20, "max": 80, "step": 2, "unit": "px", "default": 48 },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "tamano_boton", "label": "Tamaño del botón (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_boton_movil", "label": "Tamaño del botón (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "tamano_etiqueta", "label": "Tamaño de etiquetas (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_etiqueta_movil", "label": "Tamaño de etiquetas (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "tamano_paso", "label": "Tamaño de los pasos (escritorio)", "min": 16, "max": 48, "step": 1, "unit": "px", "default": 30 },
+    { "type": "range", "id": "tamano_paso_movil", "label": "Tamaño de los pasos (móvil)", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 24 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "margen_superior", "label": "Margen superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 128 },
+    { "type": "range", "id": "margen_superior_movil", "label": "Margen superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "blocks": [
+    {
+      "type": "paso",
+      "name": "Paso del test",
+      "settings": [
+        { "type": "text", "id": "texto", "label": "Texto", "default": "¿Qué quieres transmitir?" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Haru Test",
+      "blocks": [
+        { "type": "paso", "settings": { "texto": "¿Qué quieres transmitir?" } },
+        { "type": "paso", "settings": { "texto": "¿Para qué momento es?" } },
+        { "type": "paso", "settings": { "texto": "¿Qué tan presente lo quieres?" } },
+        { "type": "paso", "settings": { "texto": "Tus aromas, listos para pedir" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,189 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-cierre{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    --tamano-boton: {{ section.settings.tamano_boton_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.margen_superior_movil }}px !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-cierre *,
+  #shopify-section-{{ section.id }} .haru-cierre *::before,
+  #shopify-section-{{ section.id }} .haru-cierre *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__banda{
+    position: relative !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__banda::after{
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    opacity: .09 !important;
+    mix-blend-mode: overlay !important;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__brillo{
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -1 !important;
+    background: radial-gradient(50% 70% at 50% 120%, rgba(184,156,120,.3), transparent 70%) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__contenido{
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+    text-align: center !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__titulo{
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: .98 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__titulo em{
+    font-style: italic !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__parrafo{
+    max-width: 448px !important;
+    margin: 24px auto 0 !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+    color: color-mix(in srgb, var(--color-texto) 70%, transparent) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__boton{
+    display: inline-flex !important;
+    min-height: 48px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-top: 40px !important;
+    padding: 0 2.5em !important;
+    border: 1px solid var(--color-texto) !important;
+    background: var(--color-texto) !important;
+    color: var(--color-fondo) !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-boton) !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: background-color .25s cubic-bezier(.22,1,.36,1), color .25s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__boton:hover{
+    background: transparent !important;
+    color: var(--color-texto) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__boton:focus-visible{
+    outline: 2px solid var(--color-acento) !important;
+    outline-offset: 3px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-cierre__icono{
+    width: 16px !important;
+    height: 16px !important;
+    flex: none !important;
+  }
+  @supports (animation-timeline: view()){
+    #shopify-section-{{ section.id }} .haru-cierre__reveal{
+      animation: haru-cierre-reveal linear both !important;
+      animation-timeline: view() !important;
+      animation-range: entry 5% entry 45% !important;
+    }
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-cierre{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      --tamano-boton: {{ section.settings.tamano_boton }}px !important;
+      padding-top: {{ section.settings.margen_superior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-cierre__banda{
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #shopify-section-{{ section.id }} .haru-cierre__reveal{ animation: none !important; }
+    #shopify-section-{{ section.id }} .haru-cierre__boton{ transition-duration: .01ms !important; }
+  }
+  @keyframes haru-cierre-reveal{
+    from{ opacity: 0; transform: translateY(24px); }
+    to{ opacity: 1; transform: none; }
+  }
+{%- endstyle -%}
+
+<section class="haru-cierre haru-cierre-{{ section.id }}">
+  <div class="haru-cierre__banda">
+    <div class="haru-cierre__brillo" aria-hidden="true"></div>
+    <div class="haru-cierre__contenido">
+      <h2 class="haru-cierre__titulo haru-cierre__reveal">{{ section.settings.titulo }}</h2>
+      {%- if section.settings.parrafo != blank -%}
+        <p class="haru-cierre__parrafo haru-cierre__reveal">{{ section.settings.parrafo }}</p>
+      {%- endif -%}
+      {%- assign numero = section.settings.numero_whatsapp | remove: '+' | remove: ' ' | remove: '-' -%}
+      {%- if section.settings.texto_boton != blank and numero != blank -%}
+        <a class="haru-cierre__boton" href="https://wa.me/{{ numero }}" target="_blank" rel="noopener noreferrer">
+          <svg class="haru-cierre__icono" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.93L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.2 15.02l-.3-.18-3.07.88.9-2.99-.2-.32A8.1 8.1 0 0 1 12.04 3.8Zm-3.2 3.9c-.17 0-.45.06-.69.32-.24.26-.9.88-.9 2.15s.93 2.5 1.06 2.67c.13.17 1.8 2.86 4.43 3.9 2.19.86 2.63.69 3.1.65.48-.04 1.53-.63 1.75-1.23.22-.6.22-1.12.15-1.23-.06-.11-.24-.17-.5-.3-.26-.13-1.53-.76-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.3-.77-.69-1.3-1.55-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.58-1.4-.8-1.92-.2-.5-.42-.43-.58-.44h-.5Z" /></svg>
+          {{ section.settings.texto_boton }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Haru Cierre",
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "inline_richtext", "id": "titulo", "label": "Título", "default": "Hablemos de <em>tu aroma</em>." },
+    { "type": "textarea", "id": "parrafo", "label": "Párrafo", "default": "Escríbenos y te recomendamos con calma, sin presión y sin compromiso." },
+    { "type": "text", "id": "texto_boton", "label": "Botón: texto", "default": "Escribir por WhatsApp" },
+    { "type": "text", "id": "numero_whatsapp", "label": "Número de WhatsApp", "default": "573184124805", "info": "Con código de país y sin signos" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo de la banda", "default": "#100e0b" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#f2ede4" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#b89c78" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño del título (escritorio)", "min": 30, "max": 140, "step": 2, "unit": "px", "default": 96 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño del título (móvil)", "min": 24, "max": 90, "step": 2, "unit": "px", "default": 48 },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "tamano_boton", "label": "Tamaño del botón (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_boton_movil", "label": "Tamaño del botón (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 10 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "margen_superior", "label": "Margen superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 144 },
+    { "type": "range", "id": "margen_superior_movil", "label": "Margen superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 144 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 144 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 600, "max": 1000, "step": 8, "unit": "px", "default": 768 }
+  ],
+  "presets": [
+    { "name": "Haru Cierre" }
+  ]
+}
+{% endschema %}

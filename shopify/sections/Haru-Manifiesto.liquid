@@ -1,0 +1,192 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-mani{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --color-parrafo: {{ section.settings.color_parrafo }} !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    --tamano-etiqueta: {{ section.settings.tamano_etiqueta_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-mani :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-mani *,
+  #shopify-section-{{ section.id }} .haru-mani *::before,
+  #shopify-section-{{ section.id }} .haru-mani *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-mani__contenido{
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 40px !important;
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-mani__loto{
+    display: block !important;
+    width: 48px !important;
+    height: 28px !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-mani__cita{
+    margin: 32px 0 0 !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -.01em !important;
+  }
+  #shopify-section-{{ section.id }} .haru-mani__linea{ display: block !important; }
+  #shopify-section-{{ section.id }} .haru-mani__linea em{ font-style: italic !important; }
+  #shopify-section-{{ section.id }} .haru-mani__texto{
+    align-self: end !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.625 !important;
+    color: var(--color-parrafo) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-mani__parrafo{ margin: 0 !important; }
+  #shopify-section-{{ section.id }} .haru-mani__parrafo + .haru-mani__parrafo{ margin-top: 20px !important; }
+  #shopify-section-{{ section.id }} .haru-mani__enlace{
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-height: 44px !important;
+    margin-top: 32px !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    color: var(--color-texto) !important;
+    background-image: linear-gradient(currentColor, currentColor) !important;
+    background-size: 0% 1px !important;
+    background-position: 0 75% !important;
+    background-repeat: no-repeat !important;
+    transition: background-size .4s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-mani__enlace:hover,
+  #shopify-section-{{ section.id }} .haru-mani__enlace:focus-visible{ background-size: 100% 1px !important; }
+  #shopify-section-{{ section.id }} .haru-mani__enlace:focus-visible{
+    outline: 2px solid var(--color-acento) !important;
+    outline-offset: 3px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-mani__icono{
+    width: 16px !important;
+    height: 16px !important;
+    flex: none !important;
+  }
+  @supports (animation-timeline: view()){
+    #shopify-section-{{ section.id }} .haru-mani__reveal{
+      animation: haru-mani-reveal linear both !important;
+      animation-timeline: view() !important;
+      animation-range: entry 5% entry 45% !important;
+    }
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-mani{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      --tamano-etiqueta: {{ section.settings.tamano_etiqueta }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-mani__contenido{
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) !important;
+      gap: 96px !important;
+      padding-inline: 32px !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #shopify-section-{{ section.id }} .haru-mani__reveal{ animation: none !important; }
+    #shopify-section-{{ section.id }} .haru-mani__enlace{ transition-duration: .01ms !important; }
+  }
+  @keyframes haru-mani-reveal{
+    from{ opacity: 0; transform: translateY(24px); }
+    to{ opacity: 1; transform: none; }
+  }
+{%- endstyle -%}
+
+<section class="haru-mani haru-mani-{{ section.id }}">
+  <div class="haru-mani__contenido">
+    <div class="haru-mani__reveal">
+      <svg class="haru-mani__loto" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false">
+        <path d="M32 6 C36 14 36 22 32 30 C28 22 28 14 32 6 Z" />
+        <path d="M20 12 C24 18 26 24 26 30 C19 27 15 21 14 15 C16 13 18 12 20 12 Z" />
+        <path d="M44 12 C40 18 38 24 38 30 C45 27 49 21 50 15 C48 13 46 12 44 12 Z" />
+        <path d="M10 22 C15 24 19 27 22 31 C15 33 9 32 4 29 C5 26 7 24 10 22 Z" />
+        <path d="M54 22 C49 24 45 27 42 31 C49 33 55 32 60 29 C59 26 57 24 54 22 Z" />
+      </svg>
+      <p class="haru-mani__cita">
+        {%- if section.settings.linea_1 != blank -%}<span class="haru-mani__linea">{{ section.settings.linea_1 }}</span>{%- endif -%}
+        {%- if section.settings.linea_2 != blank -%}<span class="haru-mani__linea">{{ section.settings.linea_2 }}</span>{%- endif -%}
+        {%- if section.settings.linea_3 != blank -%}<span class="haru-mani__linea">{{ section.settings.linea_3 }}</span>{%- endif -%}
+      </p>
+    </div>
+    <div class="haru-mani__texto haru-mani__reveal">
+      {%- if section.settings.parrafo_1 != blank -%}
+        <p class="haru-mani__parrafo">{{ section.settings.parrafo_1 }}</p>
+      {%- endif -%}
+      {%- if section.settings.parrafo_2 != blank -%}
+        <p class="haru-mani__parrafo">{{ section.settings.parrafo_2 }}</p>
+      {%- endif -%}
+      {%- assign numero = section.settings.numero_whatsapp | remove: '+' | remove: ' ' | remove: '-' -%}
+      {%- if section.settings.texto_enlace != blank and numero != blank -%}
+        <a class="haru-mani__enlace" href="https://wa.me/{{ numero }}" target="_blank" rel="noopener noreferrer">
+          <svg class="haru-mani__icono" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.93L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.2 15.02l-.3-.18-3.07.88.9-2.99-.2-.32A8.1 8.1 0 0 1 12.04 3.8Zm-3.2 3.9c-.17 0-.45.06-.69.32-.24.26-.9.88-.9 2.15s.93 2.5 1.06 2.67c.13.17 1.8 2.86 4.43 3.9 2.19.86 2.63.69 3.1.65.48-.04 1.53-.63 1.75-1.23.22-.6.22-1.12.15-1.23-.06-.11-.24-.17-.5-.3-.26-.13-1.53-.76-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.3-.77-.69-1.3-1.55-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.58-1.4-.8-1.92-.2-.5-.42-.43-.58-.44h-.5Z" /></svg>
+          {{ section.settings.texto_enlace }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Haru Manifiesto",
+  "settings": [
+    { "type": "header", "content": "Cita" },
+    { "type": "text", "id": "linea_1", "label": "Línea 1", "default": "Pocas piezas." },
+    { "type": "inline_richtext", "id": "linea_2", "label": "Línea 2", "default": "Bien <em>escogidas</em>." },
+    { "type": "text", "id": "linea_3", "label": "Línea 3", "default": "Que se sientan tuyas." },
+    { "type": "header", "content": "Texto" },
+    { "type": "textarea", "id": "parrafo_1", "label": "Párrafo 1", "default": "Haru, en japonés, es primavera: ese momento en que todo vuelve a abrirse. Así elegimos cada perfume y cada joya. Sin llenar estantes, sin ruido." },
+    { "type": "textarea", "id": "parrafo_2", "label": "Párrafo 2", "default": "Y como un aroma se elige mejor hablando, aquí no estás solo: una persona real te acompaña por WhatsApp hasta que encuentres el tuyo." },
+    { "type": "text", "id": "texto_enlace", "label": "Enlace: texto", "default": "Hablar con una persona" },
+    { "type": "text", "id": "numero_whatsapp", "label": "Número de WhatsApp", "default": "573184124805", "info": "Con código de país y sin signos" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#f2ede4" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#16130f" },
+    { "type": "color", "id": "color_parrafo", "label": "Texto de los párrafos", "default": "#3a352d" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#7a5c3c" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño de la cita (escritorio)", "min": 24, "max": 100, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño de la cita (móvil)", "min": 20, "max": 70, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 17 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "tamano_etiqueta", "label": "Tamaño del enlace (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_etiqueta_movil", "label": "Tamaño del enlace (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 144 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "presets": [
+    { "name": "Haru Manifiesto" }
+  ]
+}
+{% endschema %}

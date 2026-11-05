@@ -1,0 +1,130 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-confianza{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --color-linea: color-mix(in srgb, {{ section.settings.color_texto }} 14%, transparent) !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    --tamano-etiqueta: {{ section.settings.tamano_etiqueta_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    border-bottom: 1px solid var(--color-linea) !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-confianza :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-confianza *,
+  #shopify-section-{{ section.id }} .haru-confianza *::before,
+  #shopify-section-{{ section.id }} .haru-confianza *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-confianza__lista{
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    max-width: var(--ancho-contenido) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-confianza__item{
+    margin: 0 !important;
+    padding: 28px 20px !important;
+    list-style: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-confianza__item:nth-child(even){ border-left: 1px solid var(--color-linea) !important; }
+  #shopify-section-{{ section.id }} .haru-confianza__item:nth-child(n+3){ border-top: 1px solid var(--color-linea) !important; }
+  #shopify-section-{{ section.id }} .haru-confianza__titulo{
+    margin: 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-confianza__texto{
+    margin: 8px 0 0 !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.375 !important;
+    color: var(--color-texto) !important;
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-confianza{
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      --tamano-etiqueta: {{ section.settings.tamano_etiqueta }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-confianza__lista{ grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+    #shopify-section-{{ section.id }} .haru-confianza__item{ padding: 28px 32px !important; }
+    #shopify-section-{{ section.id }} .haru-confianza__item:nth-child(n+3){ border-top: 0 !important; }
+    #shopify-section-{{ section.id }} .haru-confianza__item:nth-child(n+2){ border-left: 1px solid var(--color-linea) !important; }
+  }
+{%- endstyle -%}
+
+<section class="haru-confianza haru-confianza-{{ section.id }}" aria-label="{{ section.settings.etiqueta_aria | escape }}">
+  {%- if section.blocks.size > 0 -%}
+    <ul class="haru-confianza__lista">
+      {%- for block in section.blocks -%}
+        <li class="haru-confianza__item" {{ block.shopify_attributes }}>
+          <p class="haru-confianza__titulo">{{ block.settings.titulo }}</p>
+          <p class="haru-confianza__texto">{{ block.settings.texto }}</p>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Haru Confianza",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "etiqueta_aria", "label": "Etiqueta de accesibilidad", "default": "Cómo te atendemos" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#f2ede4" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#3a352d" },
+    { "type": "color", "id": "color_acento", "label": "Acento (títulos)", "default": "#7a5c3c" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 11, "max": 20, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 11, "max": 20, "step": 1, "unit": "px", "default": 13 },
+    { "type": "range", "id": "tamano_etiqueta", "label": "Tamaño del título (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "tamano_etiqueta_movil", "label": "Tamaño del título (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 10 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "blocks": [
+    {
+      "type": "punto",
+      "name": "Punto de confianza",
+      "settings": [
+        { "type": "text", "id": "titulo", "label": "Título", "default": "Asesoría personal" },
+        { "type": "textarea", "id": "texto", "label": "Texto", "default": "Una persona real te ayuda a elegir, por WhatsApp." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Haru Confianza",
+      "blocks": [
+        { "type": "punto", "settings": { "titulo": "Asesoría personal", "texto": "Una persona real te ayuda a elegir, por WhatsApp." } },
+        { "type": "punto", "settings": { "titulo": "Selección curada", "texto": "Pocas piezas, elegidas una a una." } },
+        { "type": "punto", "settings": { "titulo": "Sin cuentas ni formularios", "texto": "Armas tu pedido y lo confirmas en un mensaje." } },
+        { "type": "punto", "settings": { "titulo": "Confirmamos antes de cobrar", "texto": "Disponibilidad y envío acordados contigo primero." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,244 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-fam{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --color-acento-suave: {{ section.settings.color_acento_suave }} !important;
+    --color-linea: color-mix(in srgb, {{ section.settings.color_texto }} 14%, transparent) !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-familia: {{ section.settings.tamano_familia_movil }}px !important;
+    --tamano-etiqueta: {{ section.settings.tamano_etiqueta_movil }}px !important;
+    --tamano-detalle: {{ section.settings.tamano_detalle_movil }}px !important;
+    --alto-celda: {{ section.settings.alto_celda_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-fam *,
+  #shopify-section-{{ section.id }} .haru-fam *::before,
+  #shopify-section-{{ section.id }} .haru-fam *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__contenido{
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__etiqueta{
+    margin: 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__titulo{
+    margin: 12px 0 0 !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__titulo em{ font-style: italic !important; }
+  #shopify-section-{{ section.id }} .haru-fam__lista{
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1px !important;
+    margin: 40px 0 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    border: 1px solid var(--color-linea) !important;
+    background: var(--color-linea) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__item{
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    background: var(--color-fondo) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__enlace{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 100% !important;
+    min-height: var(--alto-celda) !important;
+    padding: 20px !important;
+    color: var(--color-texto) !important;
+    text-decoration: none !important;
+    transition: background-color .25s cubic-bezier(.22,1,.36,1), color .25s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__enlace:hover,
+  #shopify-section-{{ section.id }} .haru-fam__enlace:focus-visible{
+    background: var(--color-texto) !important;
+    color: var(--color-fondo) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__enlace:focus-visible{
+    outline: 2px solid var(--color-acento) !important;
+    outline-offset: -4px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__pista{
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-detalle) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+    transition: color .25s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__enlace:hover .haru-fam__pista,
+  #shopify-section-{{ section.id }} .haru-fam__enlace:focus-visible .haru-fam__pista{ color: var(--color-acento-suave) !important; }
+  #shopify-section-{{ section.id }} .haru-fam__nombre{
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-familia) !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: -.01em !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__flecha{
+    width: 20px !important;
+    height: 20px !important;
+    flex: none !important;
+    opacity: 0 !important;
+    transform: translateX(-8px) !important;
+    transition: opacity .25s cubic-bezier(.22,1,.36,1), transform .25s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-fam__enlace:hover .haru-fam__flecha,
+  #shopify-section-{{ section.id }} .haru-fam__enlace:focus-visible .haru-fam__flecha{
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+  @supports (animation-timeline: view()){
+    #shopify-section-{{ section.id }} .haru-fam__reveal{
+      animation: haru-fam-reveal linear both !important;
+      animation-timeline: view() !important;
+      animation-range: entry 5% entry 45% !important;
+    }
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-fam{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-familia: {{ section.settings.tamano_familia }}px !important;
+      --tamano-etiqueta: {{ section.settings.tamano_etiqueta }}px !important;
+      --tamano-detalle: {{ section.settings.tamano_detalle }}px !important;
+      --alto-celda: {{ section.settings.alto_celda }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-fam__contenido{ padding-inline: 32px !important; }
+    #shopify-section-{{ section.id }} .haru-fam__lista{
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      margin-top: 56px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-fam__enlace{ padding: 32px !important; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #shopify-section-{{ section.id }} .haru-fam__reveal{ animation: none !important; }
+    #shopify-section-{{ section.id }} .haru-fam__enlace,
+    #shopify-section-{{ section.id }} .haru-fam__pista,
+    #shopify-section-{{ section.id }} .haru-fam__flecha{ transition-duration: .01ms !important; }
+  }
+  @keyframes haru-fam-reveal{
+    from{ opacity: 0; transform: translateY(24px); }
+    to{ opacity: 1; transform: none; }
+  }
+{%- endstyle -%}
+
+<section class="haru-fam haru-fam-{{ section.id }}">
+  <div class="haru-fam__contenido">
+    <div class="haru-fam__reveal">
+      {%- if section.settings.etiqueta != blank -%}
+        <p class="haru-fam__etiqueta">{{ section.settings.etiqueta }}</p>
+      {%- endif -%}
+      <h2 class="haru-fam__titulo">{{ section.settings.titulo }}</h2>
+    </div>
+    {%- if section.blocks.size > 0 -%}
+      <ul class="haru-fam__lista">
+        {%- for block in section.blocks -%}
+          <li class="haru-fam__item" {{ block.shopify_attributes }}>
+            <a class="haru-fam__enlace" href="{{ block.settings.url | default: routes.collections_url }}">
+              <span class="haru-fam__pista">{{ block.settings.pista }}</span>
+              <span class="haru-fam__nombre">
+                {{ block.settings.etiqueta }}
+                <svg class="haru-fam__flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-5-5 5 5-5 5" /></svg>
+              </span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Haru Familias",
+  "max_blocks": 9,
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "etiqueta", "label": "Etiqueta superior", "default": "Por familia olfativa" },
+    { "type": "inline_richtext", "id": "titulo", "label": "Título", "default": "¿A qué te huele <em>bien</em>?" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#f2ede4" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#16130f" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#7a5c3c" },
+    { "type": "color", "id": "color_acento_suave", "label": "Acento al pasar el cursor", "default": "#b89c78" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño del título (escritorio)", "min": 24, "max": 100, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño del título (móvil)", "min": 20, "max": 70, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "tamano_familia", "label": "Tamaño del nombre (escritorio)", "min": 20, "max": 80, "step": 2, "unit": "px", "default": 48 },
+    { "type": "range", "id": "tamano_familia_movil", "label": "Tamaño del nombre (móvil)", "min": 18, "max": 60, "step": 2, "unit": "px", "default": 30 },
+    { "type": "range", "id": "tamano_etiqueta", "label": "Tamaño de la etiqueta (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_etiqueta_movil", "label": "Tamaño de la etiqueta (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_detalle", "label": "Tamaño de las notas (escritorio)", "min": 9, "max": 16, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "tamano_detalle_movil", "label": "Tamaño de las notas (móvil)", "min": 9, "max": 16, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "alto_celda", "label": "Alto de cada celda (escritorio)", "min": 100, "max": 400, "step": 10, "unit": "px", "default": 200 },
+    { "type": "range", "id": "alto_celda_movil", "label": "Alto de cada celda (móvil)", "min": 100, "max": 300, "step": 10, "unit": "px", "default": 150 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 128 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "blocks": [
+    {
+      "type": "familia",
+      "name": "Familia olfativa",
+      "settings": [
+        { "type": "text", "id": "etiqueta", "label": "Nombre", "default": "Amaderado" },
+        { "type": "text", "id": "pista", "label": "Notas", "default": "cedro, sándalo, vetiver" },
+        { "type": "url", "id": "url", "label": "Destino", "info": "Colección filtrada de esta familia. Si se deja vacío, abre la lista de colecciones" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Haru Familias",
+      "blocks": [
+        { "type": "familia", "settings": { "etiqueta": "Amaderado", "pista": "cedro, sándalo, vetiver" } },
+        { "type": "familia", "settings": { "etiqueta": "Floral", "pista": "rosa, jazmín, peonía" } },
+        { "type": "familia", "settings": { "etiqueta": "Cítrico", "pista": "bergamota, limón, mandarina" } },
+        { "type": "familia", "settings": { "etiqueta": "Ámbar y especias", "pista": "vainilla, ámbar, canela" } },
+        { "type": "familia", "settings": { "etiqueta": "Fresco", "pista": "marino, menta, té verde" } },
+        { "type": "familia", "settings": { "etiqueta": "Dulce", "pista": "caramelo, tonka, frutos rojos" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

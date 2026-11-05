@@ -1,0 +1,98 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-anuncio{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-anuncio :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-anuncio *,
+  #shopify-section-{{ section.id }} .haru-anuncio *::before,
+  #shopify-section-{{ section.id }} .haru-anuncio *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-anuncio__texto{
+    max-width: var(--ancho-contenido) !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    text-align: center !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: color-mix(in srgb, var(--color-texto) 80%, transparent) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-anuncio__enlace{
+    margin-left: 4px !important;
+    color: var(--color-texto) !important;
+    text-decoration: none !important;
+    background-image: linear-gradient(currentColor, currentColor) !important;
+    background-size: 0% 1px !important;
+    background-position: 0 100% !important;
+    background-repeat: no-repeat !important;
+    transition: background-size .4s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-anuncio__enlace:hover,
+  #shopify-section-{{ section.id }} .haru-anuncio__enlace:focus-visible{
+    background-size: 100% 1px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-anuncio__enlace:focus-visible{
+    outline: 2px solid var(--color-texto) !important;
+    outline-offset: 3px !important;
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-anuncio{
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #shopify-section-{{ section.id }} .haru-anuncio__enlace{ transition-duration: .01ms !important; }
+  }
+{%- endstyle -%}
+
+<div class="haru-anuncio haru-anuncio-{{ section.id }}">
+  <p class="haru-anuncio__texto">
+    {{- section.settings.texto -}}
+    {%- if section.settings.texto_enlace != blank %} <a class="haru-anuncio__enlace" href="{{ section.settings.url_enlace | default: '#' }}">{{ section.settings.texto_enlace }}</a>{%- endif -%}
+  </p>
+</div>
+
+{% schema %}
+{
+  "name": "Haru Anuncio",
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "texto", "label": "Texto", "default": "Asesoría personal por WhatsApp." },
+    { "type": "text", "id": "texto_enlace", "label": "Texto del enlace", "default": "Hacer el test" },
+    { "type": "url", "id": "url_enlace", "label": "Destino del enlace", "info": "Página del test de aroma" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#100e0b" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#f2ede4" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 9, "max": 16, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 9, "max": 16, "step": 1, "unit": "px", "default": 10 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 10 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 10 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 10 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 10 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 8, "unit": "px", "default": 1152 }
+  ],
+  "presets": [
+    { "name": "Haru Anuncio" }
+  ]
+}
+{% endschema %}
