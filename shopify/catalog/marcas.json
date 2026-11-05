@@ -1,0 +1,82 @@
+[
+  {
+    "marca": "Byredo",
+    "tag": "marca:byredo"
+  },
+  {
+    "marca": "Carolina Herrera",
+    "tag": "marca:carolina-herrera"
+  },
+  {
+    "marca": "Chanel",
+    "tag": "marca:chanel"
+  },
+  {
+    "marca": "Creed",
+    "tag": "marca:creed"
+  },
+  {
+    "marca": "Dior",
+    "tag": "marca:dior"
+  },
+  {
+    "marca": "Giorgio Armani",
+    "tag": "marca:giorgio-armani"
+  },
+  {
+    "marca": "Hermès",
+    "tag": "marca:hermes"
+  },
+  {
+    "marca": "Jean Paul Gaultier",
+    "tag": "marca:jean-paul-gaultier"
+  },
+  {
+    "marca": "Jo Malone London",
+    "tag": "marca:jo-malone-london"
+  },
+  {
+    "marca": "Lancôme",
+    "tag": "marca:lancome"
+  },
+  {
+    "marca": "Lattafa",
+    "tag": "marca:lattafa"
+  },
+  {
+    "marca": "Le Labo",
+    "tag": "marca:le-labo"
+  },
+  {
+    "marca": "Maison Francis Kurkdjian",
+    "tag": "marca:maison-francis-kurkdjian"
+  },
+  {
+    "marca": "Maison Margiela",
+    "tag": "marca:maison-margiela"
+  },
+  {
+    "marca": "Mugler",
+    "tag": "marca:mugler"
+  },
+  {
+    "marca": "Paco Rabanne",
+    "tag": "marca:paco-rabanne"
+  },
+  {
+    "marca": "Tom Ford",
+    "tag": "marca:tom-ford"
+  },
+  {
+    "marca": "Versace",
+    "tag": "marca:versace"
+  },
+  {
+    "marca": "Viktor&Rolf",
+    "tag": "marca:viktor-rolf"
+  },
+  {
+    "marca": "Yves Saint Laurent",
+    "tag": "marca:yves-saint-laurent"
+  }
+]

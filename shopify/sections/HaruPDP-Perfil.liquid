@@ -1,0 +1,304 @@
+{%- liquid
+  assign mf = product.metafields.haru
+  assign para_quien = mf.para_quien.value
+  assign ocasiones = mf.ocasiones_texto.value
+  assign detalle = mf.familia_detalle.value
+  assign duracion = mf.duracion.value
+  assign estela = mf.estela.value
+  assign temporadas = mf.temporadas.value | downcase
+  assign anio = mf.anio_lanzamiento.value
+  assign perfumista = mf.perfumista.value
+  assign hay_datos = false
+  if detalle != blank or duracion != blank or estela != blank or temporadas != blank or anio != blank or perfumista != blank
+    assign hay_datos = true
+  endif
+  assign hay_textos = false
+  if para_quien != blank or ocasiones != blank
+    assign hay_textos = true
+  endif
+  assign dos_columnas = false
+  if hay_textos and hay_datos
+    assign dos_columnas = true
+  endif
+  assign hay_algo = false
+  if hay_textos or hay_datos
+    assign hay_algo = true
+  endif
+  assign on_pri = false
+  assign on_ver = false
+  assign on_oto = false
+  assign on_inv = false
+  if temporadas contains 'primavera'
+    assign on_pri = true
+  endif
+  if temporadas contains 'verano'
+    assign on_ver = true
+  endif
+  if temporadas contains 'otoño' or temporadas contains 'otono'
+    assign on_oto = true
+  endif
+  if temporadas contains 'invierno'
+    assign on_inv = true
+  endif
+-%}
+{%- if hay_algo -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-pdp-perf{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --color-parrafo: {{ section.settings.color_parrafo }} !important;
+    --color-linea: color-mix(in srgb, {{ section.settings.color_texto }} 14%, transparent) !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-subtitulo: {{ section.settings.tamano_subtitulo_movil }}px !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    --tamano-etiqueta: {{ section.settings.tamano_etiqueta_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-pdp-perf *,
+  #shopify-section-{{ section.id }} .haru-pdp-perf *::before,
+  #shopify-section-{{ section.id }} .haru-pdp-perf *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__contenido{
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 48px !important;
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__textos{
+    display: grid !important;
+    gap: 40px !important;
+    align-content: start !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__titulo{
+    margin: 0 0 16px !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__parrafo{
+    max-width: 560px !important;
+    margin: 0 !important;
+    color: var(--color-parrafo) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__datos-titulo{
+    margin: 0 0 20px !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    font-weight: 400 !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__lista{
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1px solid var(--color-linea) !important;
+    background: var(--color-linea) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__dato{
+    margin: 0 !important;
+    padding: 16px !important;
+    background: var(--color-fondo) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__dato--ancho{ grid-column: 1 / -1 !important; }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__dt{
+    margin: 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__dd{
+    margin: 6px 0 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-subtitulo) !important;
+    line-height: 1.2 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__estaciones{
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    margin: 10px 0 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__estacion{
+    margin: 0 !important;
+    padding: 10px 4px !important;
+    border: 1px solid var(--color-linea) !important;
+    text-align: center !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    letter-spacing: .06em !important;
+    text-transform: uppercase !important;
+    list-style: none !important;
+    opacity: .4 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-perf__estacion.is-activa{
+    opacity: 1 !important;
+    border-color: var(--color-acento) !important;
+    background: var(--color-acento) !important;
+    color: var(--color-fondo) !important;
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-pdp-perf{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-subtitulo: {{ section.settings.tamano_subtitulo }}px !important;
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      --tamano-etiqueta: {{ section.settings.tamano_etiqueta }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-pdp-perf__contenido{
+      gap: 80px !important;
+      padding-inline: 32px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-pdp-perf__contenido--dos{
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    }
+    #shopify-section-{{ section.id }} .haru-pdp-perf__dato{ padding: 20px !important; }
+  }
+{%- endstyle -%}
+
+<section class="haru-pdp-perf haru-pdp-perf-{{ section.id }}">
+  <div class="haru-pdp-perf__contenido{% if dos_columnas %} haru-pdp-perf__contenido--dos{% endif %}">
+    {%- if hay_textos -%}
+      <div class="haru-pdp-perf__textos">
+        {%- if para_quien != blank -%}
+          <div>
+            <h2 class="haru-pdp-perf__titulo">{{ section.settings.titulo_para }}</h2>
+            <p class="haru-pdp-perf__parrafo">{{ para_quien | escape | newline_to_br }}</p>
+          </div>
+        {%- endif -%}
+        {%- if ocasiones != blank -%}
+          <div>
+            <h2 class="haru-pdp-perf__titulo">{{ section.settings.titulo_ocasiones }}</h2>
+            <p class="haru-pdp-perf__parrafo">{{ ocasiones | escape | newline_to_br }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if hay_datos -%}
+      <div>
+        <h2 class="haru-pdp-perf__datos-titulo">{{ section.settings.titulo_datos }}</h2>
+        <dl class="haru-pdp-perf__lista">
+          {%- if detalle != blank -%}
+            <div class="haru-pdp-perf__dato haru-pdp-perf__dato--ancho">
+              <dt class="haru-pdp-perf__dt">{{ section.settings.etiqueta_familia }}</dt>
+              <dd class="haru-pdp-perf__dd">{{ detalle | escape }}</dd>
+            </div>
+          {%- endif -%}
+          {%- if duracion != blank -%}
+            <div class="haru-pdp-perf__dato">
+              <dt class="haru-pdp-perf__dt">{{ section.settings.etiqueta_duracion }}</dt>
+              <dd class="haru-pdp-perf__dd">{{ duracion | escape }}</dd>
+            </div>
+          {%- endif -%}
+          {%- if estela != blank -%}
+            <div class="haru-pdp-perf__dato">
+              <dt class="haru-pdp-perf__dt">{{ section.settings.etiqueta_estela }}</dt>
+              <dd class="haru-pdp-perf__dd">{{ estela | escape }}</dd>
+            </div>
+          {%- endif -%}
+          {%- if anio != blank -%}
+            <div class="haru-pdp-perf__dato">
+              <dt class="haru-pdp-perf__dt">{{ section.settings.etiqueta_anio }}</dt>
+              <dd class="haru-pdp-perf__dd">{{ anio }}</dd>
+            </div>
+          {%- endif -%}
+          {%- if perfumista != blank -%}
+            <div class="haru-pdp-perf__dato">
+              <dt class="haru-pdp-perf__dt">{{ section.settings.etiqueta_perfumista }}</dt>
+              <dd class="haru-pdp-perf__dd">{{ perfumista | escape }}</dd>
+            </div>
+          {%- endif -%}
+          {%- if temporadas != blank -%}
+            <div class="haru-pdp-perf__dato haru-pdp-perf__dato--ancho">
+              <dt class="haru-pdp-perf__dt">{{ section.settings.etiqueta_temporadas }}</dt>
+              <dd class="haru-pdp-perf__dd">
+                <ul class="haru-pdp-perf__estaciones">
+                  <li class="haru-pdp-perf__estacion{% if on_pri %} is-activa{% endif %}">{{ section.settings.nombre_primavera }}</li>
+                  <li class="haru-pdp-perf__estacion{% if on_ver %} is-activa{% endif %}">{{ section.settings.nombre_verano }}</li>
+                  <li class="haru-pdp-perf__estacion{% if on_oto %} is-activa{% endif %}">{{ section.settings.nombre_otono }}</li>
+                  <li class="haru-pdp-perf__estacion{% if on_inv %} is-activa{% endif %}">{{ section.settings.nombre_invierno }}</li>
+                </ul>
+              </dd>
+            </div>
+          {%- endif -%}
+        </dl>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Haru PDP Perfil",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "header", "content": "Títulos" },
+    { "type": "text", "id": "titulo_para", "label": "Título: para quién es", "default": "Para quién es" },
+    { "type": "text", "id": "titulo_ocasiones", "label": "Título: ocasiones", "default": "Ocasiones" },
+    { "type": "text", "id": "titulo_datos", "label": "Título: ficha técnica", "default": "Ficha" },
+    { "type": "header", "content": "Etiquetas de datos" },
+    { "type": "text", "id": "etiqueta_familia", "label": "Familia", "default": "Familia" },
+    { "type": "text", "id": "etiqueta_duracion", "label": "Duración", "default": "Duración" },
+    { "type": "text", "id": "etiqueta_estela", "label": "Estela", "default": "Estela" },
+    { "type": "text", "id": "etiqueta_anio", "label": "Año", "default": "Año" },
+    { "type": "text", "id": "etiqueta_perfumista", "label": "Perfumista", "default": "Perfumista" },
+    { "type": "text", "id": "etiqueta_temporadas", "label": "Temporadas", "default": "Temporadas" },
+    { "type": "text", "id": "nombre_primavera", "label": "Estación 1", "default": "Primavera" },
+    { "type": "text", "id": "nombre_verano", "label": "Estación 2", "default": "Verano" },
+    { "type": "text", "id": "nombre_otono", "label": "Estación 3", "default": "Otoño" },
+    { "type": "text", "id": "nombre_invierno", "label": "Estación 4", "default": "Invierno" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#f2ede4" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#16130f" },
+    { "type": "color", "id": "color_parrafo", "label": "Texto secundario", "default": "#3a352d" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#7a5c3c" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño del título (escritorio)", "min": 24, "max": 100, "step": 2, "unit": "px", "default": 44 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño del título (móvil)", "min": 20, "max": 70, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "tamano_subtitulo", "label": "Tamaño de los datos (escritorio)", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 24 },
+    { "type": "range", "id": "tamano_subtitulo_movil", "label": "Tamaño de los datos (móvil)", "min": 16, "max": 32, "step": 1, "unit": "px", "default": 20 },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "tamano_etiqueta", "label": "Tamaño de etiquetas (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_etiqueta_movil", "label": "Tamaño de etiquetas (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 10 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 72 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "presets": [
+    { "name": "Haru PDP Perfil" }
+  ]
+}
+{% endschema %}

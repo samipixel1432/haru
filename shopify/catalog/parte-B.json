@@ -1,0 +1,606 @@
+[
+  {
+    "slug": "chanel-no-5",
+    "nombre": "N°5 Eau de Parfum",
+    "marca": "Chanel",
+    "genero": "mujer",
+    "familia": "floral",
+    "familia_detalle": "Floral aldehídico",
+    "notas_salida": "Aldehídos, neroli, ylang-ylang, bergamota, limón",
+    "notas_corazon": "Jazmín, rosa, iris, lirio de los valles",
+    "notas_fondo": "Sándalo, vainilla, pachulí, vetiver, musgo de roble",
+    "duracion": "Moderada (5–7 h)",
+    "estela": "Moderada",
+    "ocasion": "Ocasiones especiales",
+    "temporadas": [
+      "primavera",
+      "otoño",
+      "invierno"
+    ],
+    "presentaciones_ml": [
+      35,
+      50,
+      100
+    ],
+    "anio_lanzamiento": 1986,
+    "perfumista": "Jacques Polge (sobre la fórmula original de Ernest Beaux, 1921)",
+    "mas_vendido": false,
+    "descripcion_corta": "Un floral de aldehídos que abre como aire frío y se asienta en jazmín, rosa y maderas suaves. Un clásico sereno.",
+    "descripcion_larga": "N°5 abre con un destello limpio de aldehídos, casi como tela recién planchada. Debajo aparecen el neroli y los cítricos, brillantes y breves.\n\nEl corazón es un ramo de jazmín, rosa e iris, sin dulzura excesiva. Con las horas se retira hacia una base de sándalo, vainilla y musgo que huele a piel cálida y polvo suave. Es un perfume de líneas rectas y gesto contenido, de los que no se explican. Esta versión Eau de Parfum es más redonda y cálida que la fórmula original de 1921. Se nota más cuando el aire es fresco, y pide una mano ligera: con pocas pulverizaciones llena el espacio justo.",
+    "para_quien": "Para quien prefiere la elegancia sin ruido y un aroma reconocible, de silueta clásica. Funciona bien en quien disfruta los florales polvosos y limpios.",
+    "ocasiones_texto": "Se siente bien en cenas, reuniones formales y días frescos, aplicado con moderación.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura N°5 Eau de Parfum en la piel?",
+        "a": "En general, entre cinco y siete horas, según la piel, el clima y la cantidad aplicada. Sobre la ropa suele permanecer más tiempo."
+      },
+      {
+        "q": "¿Cómo se aplica para que no resulte pesado?",
+        "a": "Dos o tres pulverizaciones bastan: cuello, muñecas y pecho. Es un perfume con aldehídos, así que conviene aplicarlo a unos 20 cm de la piel."
+      },
+      {
+        "q": "¿Qué tamaño conviene elegir?",
+        "a": "Si es tu primera vez con este perfume, el de 35 o 50 ml permite conocerlo con calma. El de 100 ml tiene más sentido cuando ya sabes que será de uso frecuente."
+      }
+    ],
+    "similares": [
+      "dior-j-adore",
+      "chanel-coco-mademoiselle",
+      "dior-miss-dior"
+    ],
+    "similares_motivo": "Comparten una base floral elegante y de línea clásica; N°5 es más aldehídico y polvoso, mientras que los otros son más frutales o más luminosos.",
+    "seo_title": "Chanel N°5 Eau de Parfum | Haru",
+    "seo_description": "Chanel N°5 Eau de Parfum: floral aldehídico con jazmín, rosa y sándalo. Notas, duración, tamaños y perfumes parecidos.",
+    "fuentes": [
+      "https://www.notino.ie/chanel/n5-eau-de-parfum-for-women/",
+      "https://fragrance-web.pages.dev/de/perfume/chanel-chanel-no-5-eau-de-parfum",
+      "https://www.galaxus.ch/en/s6/product/chanel-n5-eau-de-parfum-100-ml-fragrances-5955584"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. Las notas salen de listados de tiendas que no coinciden del todo (la salida varía entre fuentes). El año 1986 y el crédito a Jacques Polge para la versión EDP aparecen en fuentes minoristas y los confirmé con conocimiento propio; no los vi en la ficha oficial de Chanel. Tamaños 35/50/100 ml vistos en tiendas; puede existir 150 ml o recargas según región. mas_vendido=false porque solo aparece en un ranking de baja fiabilidad (Alibaba)."
+  },
+  {
+    "slug": "chanel-coco-mademoiselle",
+    "nombre": "Coco Mademoiselle Eau de Parfum",
+    "marca": "Chanel",
+    "genero": "mujer",
+    "familia": "ambar",
+    "familia_detalle": "Oriental fresco (chipre floral con pachulí)",
+    "notas_salida": "Naranja, bergamota, mandarina, flor de naranjo",
+    "notas_corazon": "Rosa, jazmín, lichi",
+    "notas_fondo": "Pachulí, vetiver, vainilla, almizcle",
+    "duracion": "Moderada (5–7 h)",
+    "estela": "Moderada",
+    "ocasion": "Día y noche",
+    "temporadas": [
+      "primavera",
+      "otoño",
+      "invierno"
+    ],
+    "presentaciones_ml": [
+      35,
+      50,
+      100
+    ],
+    "anio_lanzamiento": 2001,
+    "perfumista": "Jacques Polge",
+    "mas_vendido": false,
+    "descripcion_corta": "Naranja luminosa, rosa y un fondo de pachulí limpio. Un perfume de día que no desaparece de noche.",
+    "descripcion_larga": "Coco Mademoiselle empieza con naranja y bergamota, un cítrico jugoso que se mueve rápido. Enseguida entran la rosa y el jazmín, con un toque de lichi que los vuelve más suaves.\n\nEl fondo es lo que lo define: pachulí limpio, vetiver y una vainilla discreta que se pega a la piel. No es dulce ni pesado. Se lleva con la misma naturalidad con camisa blanca que con un vestido de noche. Es un perfume de contrastes: fresco al inicio, algo terroso al final, siempre pulido. Es un perfume que acompaña la jornada completa, sin cambiar de carácter ni exigir ocasión.",
+    "para_quien": "Para quien busca un aroma versátil y seguro, con carácter pero sin exceso. Va bien en quien se mueve entre oficina, planes y cenas.",
+    "ocasiones_texto": "Funciona en el trabajo, en salidas de tarde y en noches templadas.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura Coco Mademoiselle Eau de Parfum?",
+        "a": "Lo habitual son entre cinco y siete horas. Los cítricos del inicio se van rápido; el pachulí y la vainilla son los que quedan."
+      },
+      {
+        "q": "¿Es más de día o de noche?",
+        "a": "Sirve para ambos. Con calor se siente más fresco y cítrico; con frío, el fondo cálido toma protagonismo."
+      },
+      {
+        "q": "¿Qué tamaño me conviene?",
+        "a": "El de 50 ml es un punto medio razonable para uso diario. El de 35 ml es útil para llevar en el bolso y el de 100 ml para quien lo usa casi todos los días."
+      }
+    ],
+    "similares": [
+      "chanel-no-5",
+      "dior-miss-dior",
+      "ysl-libre"
+    ],
+    "similares_motivo": "Todos tienen una elegancia limpia y una base suave; Coco Mademoiselle es más cítrico y con pachulí, N°5 es más polvoso y Libre es más aromático y vainillado.",
+    "seo_title": "Chanel Coco Mademoiselle Eau de Parfum | Haru",
+    "seo_description": "Chanel Coco Mademoiselle EDP: naranja, rosa y pachulí limpio. Notas, duración, tamaños y perfumes parecidos para elegir con calma.",
+    "fuentes": [
+      "https://en.wikipedia.org/wiki/Coco_Mademoiselle",
+      "https://www.tendance-parfums.com/en/coco-mle-edp.html",
+      "https://fraganty.ai/perfume/coco-mademoiselle-parfum"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. Wikipedia solo da una lista corta (naranja, jazmín, rosa, pachulí, vetiver); la lista completa sale de tiendas y no se contrastó en Chanel. Año 2001 y Polge sí aparecen en Wikipedia. Tamaños vistos en tiendas, no en la web de Chanel. mas_vendido=false: no hallé rankings fiables que lo mencionen de forma repetida."
+  },
+  {
+    "slug": "dior-j-adore",
+    "nombre": "J'adore Eau de Parfum",
+    "marca": "Dior",
+    "genero": "mujer",
+    "familia": "floral",
+    "familia_detalle": "Floral frutal",
+    "notas_salida": "Pera, melón, durazno, mandarina, bergamota",
+    "notas_corazon": "Jazmín, rosa, ciclamen, lirio de los valles, tuberosa, orquídea",
+    "notas_fondo": "Almizcle, vainilla, mora, cedro",
+    "duracion": "Moderada (5–7 h)",
+    "estela": "Moderada",
+    "ocasion": "Día y noche",
+    "temporadas": [
+      "primavera",
+      "verano",
+      "otoño"
+    ],
+    "presentaciones_ml": [
+      30,
+      50,
+      100
+    ],
+    "anio_lanzamiento": 1999,
+    "perfumista": "Calice Becker",
+    "mas_vendido": true,
+    "descripcion_corta": "Un ramo de flores blancas con fruta madura al inicio. Luminoso, femenino y fácil de llevar a cualquier hora.",
+    "descripcion_larga": "J'adore abre con pera y durazno maduros, un jugo suave más que un cítrico. Pronto aparece un jardín de flores blancas: jazmín, rosa, lirio de los valles, con un fondo cremoso de tuberosa.\n\nLa base es de almizcle y vainilla ligera, con un toque de madera clara. Todo está mezclado de manera que ninguna nota se impone. Es un perfume redondo, sin aristas, pensado para quien quiere oler a flores sin que huela a jabón ni a azúcar. Es de esos aromas que se asocian con una persona y dejan, al pasar, una impresión limpia y clara.",
+    "para_quien": "Para quien prefiere un floral amable y luminoso, de los que gustan a casi todos. Buen primer perfume de perfil clásico.",
+    "ocasiones_texto": "Va bien en el día a día, en reuniones, bodas de tarde y en noches de primavera.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura J'adore Eau de Parfum?",
+        "a": "Entre cinco y siete horas en la mayoría de pieles. Los florales blancos tienden a notarse más al inicio y de forma más íntima después."
+      },
+      {
+        "q": "¿Es muy fuerte?",
+        "a": "Su estela es moderada. Dos o tres pulverizaciones se perciben sin llenar la habitación."
+      },
+      {
+        "q": "¿Cómo elijo el tamaño?",
+        "a": "El de 30 o 50 ml es suficiente si lo alternas con otros perfumes. El de 100 ml conviene si lo usarás casi a diario."
+      }
+    ],
+    "similares": [
+      "dior-miss-dior",
+      "viktor-rolf-flowerbomb",
+      "chanel-no-5"
+    ],
+    "similares_motivo": "Todos son florales de perfil elegante; J'adore es más frutal y cremoso, Miss Dior es más fresco y de rosa, Flowerbomb es más dulce e intenso.",
+    "seo_title": "Dior J'adore Eau de Parfum | Haru",
+    "seo_description": "Dior J'adore Eau de Parfum: floral luminoso de pera, jazmín, rosa y almizcle. Notas, duración, tamaños y perfumes parecidos.",
+    "fuentes": [
+      "https://Www.Wikipedia.org/wiki/J%27Adore_(fragrance)",
+      "https://www.decantx.com/products/dior-jadore-eau-de-parfum-for-women",
+      "https://scentverdict.com/perfume/dior-jadore-eau-de-parfum",
+      "https://perfumania.com/products/dior-j-adore-womens-eau-de-parfum-spray",
+      "https://www.thefashionspot.com/beauty/616565-best-perfumes-for-women-fragrance/"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. Las listas de notas difieren entre tiendas y no hallé la lista oficial de Dior. Año 1999 y Calice Becker aparecen en varias fuentes. Tamaños 30/50/100/150 vistos en tiendas; 150 ml no incluido. mas_vendido=true por aparecer en varios listados de ventas, que son de fiabilidad desigual."
+  },
+  {
+    "slug": "ysl-libre",
+    "nombre": "Libre Eau de Parfum",
+    "marca": "Yves Saint Laurent",
+    "genero": "mujer",
+    "familia": "floral",
+    "familia_detalle": "Floral aromático con lavanda y vainilla",
+    "notas_salida": "Mandarina, neroli, lavanda, grosella negra",
+    "notas_corazon": "Flor de naranjo, jazmín sambac, lavanda",
+    "notas_fondo": "Vainilla, almizcle blanco, cedro, ámbar gris",
+    "duracion": "Moderada (5–7 h)",
+    "estela": "Moderada",
+    "ocasion": "Día y noche",
+    "temporadas": [
+      "primavera",
+      "otoño",
+      "invierno"
+    ],
+    "presentaciones_ml": [
+      30,
+      50,
+      90
+    ],
+    "anio_lanzamiento": 2019,
+    "perfumista": "Anne Flipo, Carlos Benaim y Juliette Karagueuzoglou",
+    "mas_vendido": true,
+    "descripcion_corta": "Lavanda y flor de naranjo sobre una vainilla limpia. Un floral con acento aromático, seguro y sereno.",
+    "descripcion_larga": "Libre empieza con mandarina y lavanda, una mezcla fresca y un poco inesperada en un perfume de mujer. El neroli la suaviza sin quitarle claridad.\n\nEn el corazón, la flor de naranjo y el jazmín sambac le dan un aire blanco y cálido. El fondo es de vainilla seca, almizcle y madera, sin empalagar. El resultado tiene una calidad tranquila, entre limpia y envolvente. No intenta seducir con ruido: se queda cerca y se nota cuando alguien se acerca. Es un perfume que invita a la calma, útil cuando se busca algo moderno pero sin estridencias.",
+    "para_quien": "Para quien quiere un aroma moderno, con la frescura de la lavanda y la calidez de la vainilla. Buena opción si los florales clásicos te parecen demasiado dulces.",
+    "ocasiones_texto": "Va bien en el trabajo, en tardes de planes y en noches frescas.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura Libre Eau de Parfum?",
+        "a": "En general, entre cinco y siete horas, aunque la vainilla y el almizcle pueden notarse un poco más sobre la ropa."
+      },
+      {
+        "q": "¿Es un perfume dulce?",
+        "a": "Tiene vainilla, pero la lavanda y los cítricos del inicio lo mantienen seco y limpio. No es un gourmand."
+      },
+      {
+        "q": "¿Qué tamaño elegir?",
+        "a": "El de 50 ml cubre bien el uso de varios meses. El de 30 ml sirve para probarlo y el de 90 ml para quien ya lo conoce."
+      }
+    ],
+    "similares": [
+      "chanel-coco-mademoiselle",
+      "lancome-la-vie-est-belle",
+      "ysl-black-opium"
+    ],
+    "similares_motivo": "Comparten calidez de vainilla y sensación moderna; Libre es más aromático y seco, La Vie Est Belle es más gourmand y Black Opium es más intenso y de café.",
+    "seo_title": "YSL Libre Eau de Parfum | Haru",
+    "seo_description": "Yves Saint Laurent Libre Eau de Parfum: lavanda, flor de naranjo y vainilla limpia. Notas, duración, tamaños y perfumes parecidos.",
+    "fuentes": [
+      "https://www.lookfantastic.com/p/yves-saint-laurent-libre-eau-de-parfum-various-sizes/12218719",
+      "https://www.davidjones.com/product/yves-saint-laurent-libre-eau-de-parfum-90ml-22946132",
+      "https://nearstore.com/en-ca/products/libre-by-yves-saint-laurent-eau-de-parfum-spray-1-oz-for-women",
+      "https://www.thefashionspot.com/beauty/616565-best-perfumes-for-women-fragrance/"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. Los resultados de tiendas confirman lavanda, flor de naranjo y vainilla, pero NO confirmaron el año 2019 ni los perfumistas para la versión EDP (Anne Flipo aparecía solo en un flanker); esos datos salen de mi conocimiento previo y deben verificarse. Notas de salida y fondo parcialmente de mi conocimiento. Tamaños 30/50/90 vistos en tiendas."
+  },
+  {
+    "slug": "ysl-black-opium",
+    "nombre": "Black Opium Eau de Parfum",
+    "marca": "Yves Saint Laurent",
+    "genero": "mujer",
+    "familia": "dulce",
+    "familia_detalle": "Oriental vainillado con café",
+    "notas_salida": "Pera, pimienta rosa, flor de naranjo",
+    "notas_corazon": "Café, jazmín, almendra amarga, regaliz",
+    "notas_fondo": "Vainilla, pachulí, cedro, madera cachemira",
+    "duracion": "Larga (8 h o más)",
+    "estela": "Fuerte",
+    "ocasion": "Noche",
+    "temporadas": [
+      "otoño",
+      "invierno"
+    ],
+    "presentaciones_ml": [
+      30,
+      50,
+      90
+    ],
+    "anio_lanzamiento": 2014,
+    "perfumista": "Nathalie Lorson, Marie Salamagne, Olivier Cresp y Honorine Blanc",
+    "mas_vendido": true,
+    "descripcion_corta": "Café tostado, flores blancas y vainilla densa. Un perfume de noche con presencia clara y dulce.",
+    "descripcion_larga": "Black Opium abre con una chispa de pera y pimienta rosa que dura poco. Lo que sigue es café, oscuro y tostado, atravesado por jazmín y un toque de almendra amarga.\n\nLa base es de vainilla densa, con pachulí y maderas suaves. Es un perfume gourmand, de los que se quedan en la ropa y en el aire. Se siente más cómodo cuando baja la temperatura y se enciende la noche. Pide una mano ligera: una o dos pulverizaciones ya se notan. Su calidez permanece en bufandas y abrigos, y reaparece horas después con un dulzor más suave.",
+    "para_quien": "Para quien disfruta los aromas dulces, cálidos y con presencia, y quiere un perfume que se recuerde.",
+    "ocasiones_texto": "Pensado para noches, cenas y clima fresco; en el día conviene aplicarlo con poca cantidad.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura Black Opium Eau de Parfum?",
+        "a": "Suele superar las ocho horas, y la vainilla se mantiene mucho tiempo sobre la ropa."
+      },
+      {
+        "q": "¿Se puede usar en clima cálido?",
+        "a": "Se puede, pero es un perfume denso. Con calor conviene una sola pulverización o reservarlo para la noche."
+      },
+      {
+        "q": "¿Qué tamaño elegir?",
+        "a": "Como rinde bastante con pocas pulverizaciones, el de 30 o 50 ml suele ser suficiente. El de 90 ml es para uso muy frecuente."
+      }
+    ],
+    "similares": [
+      "carolina-herrera-good-girl",
+      "lancome-la-vie-est-belle",
+      "viktor-rolf-flowerbomb"
+    ],
+    "similares_motivo": "Todos son dulces y de buena proyección; Black Opium aporta café y almendra, Good Girl cacao y tonka, La Vie Est Belle un praliné más claro.",
+    "seo_title": "YSL Black Opium Eau de Parfum | Haru",
+    "seo_description": "Yves Saint Laurent Black Opium EDP: café, flores blancas y vainilla. Notas, duración, tamaños y perfumes parecidos para noche.",
+    "fuentes": [
+      "https://sephora.com/product/P509702",
+      "https://www.bloomingdales.com/shop/product/yves-saint-laurent-black-opium-eau-de-parfum?ID=1425682",
+      "https://www.mccabespharmacy.com/products/ysl-black-opium-edp-90ml-3-piece-set",
+      "https://www.thefashionspot.com/beauty/616565-best-perfumes-for-women-fragrance/"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. Las listas de notas varían ligeramente entre tiendas (la pera y la pimienta rosa no aparecen en todas). Año 2014 y los cuatro perfumistas aparecen en listados de tiendas, no en YSL. Tamaños 30/50/90 aproximados según tiendas; también hay formatos de 8 ml. Evité mezclar con Le Parfum."
+  },
+  {
+    "slug": "lancome-la-vie-est-belle",
+    "nombre": "La Vie Est Belle Eau de Parfum",
+    "marca": "Lancôme",
+    "genero": "mujer",
+    "familia": "dulce",
+    "familia_detalle": "Floral gourmand con iris",
+    "notas_salida": "Pera, grosella negra",
+    "notas_corazon": "Iris, jazmín, flor de naranjo",
+    "notas_fondo": "Praliné, vainilla, haba tonka, pachulí",
+    "duracion": "Larga (8 h o más)",
+    "estela": "Fuerte",
+    "ocasion": "Día y noche",
+    "temporadas": [
+      "primavera",
+      "otoño",
+      "invierno"
+    ],
+    "presentaciones_ml": [
+      30,
+      50,
+      75,
+      100
+    ],
+    "anio_lanzamiento": 2012,
+    "perfumista": "Olivier Polge, Dominique Ropion y Anne Flipo",
+    "mas_vendido": false,
+    "descripcion_corta": "Iris empolvado y flores blancas sobre praliné y vainilla. Dulce, cálido y fácil de reconocer.",
+    "descripcion_larga": "La Vie Est Belle comienza con una nota frutal de pera y grosella negra, breve y jugosa. Después aparece el iris, con su textura de polvo suave, acompañado de jazmín y flor de naranjo.\n\nEl fondo es lo que más se recuerda: praliné, vainilla y haba tonka, con una pizca de pachulí que evita que se vuelva azucarado. Es un perfume gourmand y amable, con una estela que se hace notar. Se siente cercano, casi como un abrigo ligero. Con las horas, el dulzor se vuelve más suave y el iris reaparece, discreto, entre la vainilla.",
+    "para_quien": "Para quien disfruta lo dulce y cálido sin llegar a lo pesado, y quiere un aroma amable de uso diario.",
+    "ocasiones_texto": "Funciona en el día a día, en planes de tarde y en noches frescas.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura La Vie Est Belle Eau de Parfum?",
+        "a": "En la mayoría de pieles supera las ocho horas, con el praliné y la vainilla como lo último en irse."
+      },
+      {
+        "q": "¿Es muy dulce?",
+        "a": "Sí tiene un fondo gourmand, pero el iris y las flores blancas le dan equilibrio. Es dulce sin ser empalagoso."
+      },
+      {
+        "q": "¿Qué tamaño conviene?",
+        "a": "El de 50 ml es práctico para el uso regular. El de 100 ml tiene sentido si ya es tu perfume de cabecera."
+      }
+    ],
+    "similares": [
+      "carolina-herrera-good-girl",
+      "ysl-black-opium",
+      "viktor-rolf-flowerbomb"
+    ],
+    "similares_motivo": "Comparten dulzor y presencia; La Vie Est Belle es más suave y de iris, Good Girl es más cacaoso y Flowerbomb más floral.",
+    "seo_title": "Lancôme La Vie Est Belle Eau de Parfum | Haru",
+    "seo_description": "Lancôme La Vie Est Belle EDP: iris, praliné y vainilla. Notas, duración, tamaños y perfumes parecidos para decidir con calma.",
+    "fuentes": [
+      "https://www.lancome.ca/en/fragrance/la-vie-est-belle-edp-limited-edition-bottle/01105-LAC.html",
+      "https://www.lookfantastic.com/p/lancome-la-vie-est-belle-eau-de-parfum-100ml/11185339/",
+      "https://www.johnlewis.com/lancome-la-vie-est-belle-eau-de-parfum/p355557"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. La página oficial de Lancôme (edición limitada) lista una pirámide algo distinta (iris pallida, azahar, jazmín sambac, vainilla, pachulí) sin pera ni praliné; usé la lista de tiendas, más común. Año 2012 y tres perfumistas según tiendas. Tamaños 30/50/75/100 vistos; 150 ml existe pero no lo incluí. mas_vendido=false porque no lo hallé en rankings."
+  },
+  {
+    "slug": "carolina-herrera-good-girl",
+    "nombre": "Good Girl Eau de Parfum",
+    "marca": "Carolina Herrera",
+    "genero": "mujer",
+    "familia": "dulce",
+    "familia_detalle": "Oriental floral con cacao y tonka",
+    "notas_salida": "Bergamota, almendra, café",
+    "notas_corazon": "Jazmín sambac, tuberosa, iris",
+    "notas_fondo": "Cacao, haba tonka, vainilla, sándalo, almizcle",
+    "duracion": "Larga (8 h o más)",
+    "estela": "Fuerte",
+    "ocasion": "Noche",
+    "temporadas": [
+      "otoño",
+      "invierno"
+    ],
+    "presentaciones_ml": [
+      30,
+      50,
+      80
+    ],
+    "anio_lanzamiento": 2016,
+    "perfumista": "Louise Turner y Quentin Bisch",
+    "mas_vendido": true,
+    "descripcion_corta": "Tuberosa y jazmín envueltos en cacao, tonka y café. Un perfume de noche, dulce y con carácter.",
+    "descripcion_larga": "Good Girl abre con bergamota y un toque de almendra y café, un inicio cálido que enseguida se llena de flores. La tuberosa y el jazmín sambac dominan el corazón, cremosos y algo narcóticos.\n\nLa base es de cacao, haba tonka y vainilla, con sándalo y almizcle para darle sostén. Es un perfume de contraste: floral y gourmand a la vez, elegante pero decidido. Deja una estela clara y se queda horas en la piel. Un solo gesto de aplicación suele alcanzar. Con el paso de las horas, el cacao se calma y la vainilla queda como una capa tibia sobre la piel.",
+    "para_quien": "Para quien le gustan los aromas dulces y florales con presencia, y quiere uno de noche con personalidad.",
+    "ocasiones_texto": "Pensado para noches, cenas y clima fresco; en el día, con poca cantidad.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura Good Girl Eau de Parfum?",
+        "a": "Habitualmente más de ocho horas, con el cacao y la vainilla persistiendo en la ropa."
+      },
+      {
+        "q": "¿Es adecuado para el calor?",
+        "a": "Es un perfume denso. En clima cálido funciona mejor de noche y con pocas pulverizaciones."
+      },
+      {
+        "q": "¿Cómo elijo el tamaño?",
+        "a": "Con 30 o 50 ml puedes conocerlo bien. El de 80 ml es para quien ya sabe que lo usará con frecuencia."
+      }
+    ],
+    "similares": [
+      "ysl-black-opium",
+      "lancome-la-vie-est-belle",
+      "viktor-rolf-flowerbomb"
+    ],
+    "similares_motivo": "Todos son dulces y con buena proyección; Good Girl se distingue por la tuberosa y el cacao, Black Opium por el café y La Vie Est Belle por el iris.",
+    "seo_title": "Carolina Herrera Good Girl Eau de Parfum | Haru",
+    "seo_description": "Carolina Herrera Good Girl EDP: tuberosa, jazmín, cacao y tonka. Notas, duración, tamaños y perfumes parecidos para la noche.",
+    "fuentes": [
+      "https://www.maxaroma.com/fragrance/women/carolina-herrera-good-girl-edp/pid/14653/",
+      "https://www.scentsangel.com/products/carolina-herrera-good-girl-eau-de-parfum",
+      "https://perfumeforever.com/products/good-girl-eau-de-parfum-80ml",
+      "https://www.thefashionspot.com/beauty/616565-best-perfumes-for-women-fragrance/",
+      "https://www.scentstore.com/most-popular-perfumes-for-women/"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. Notas tomadas de listados de tiendas con pequeñas diferencias (iris y sándalo solo en algunos). Año 2016 y perfumistas según tiendas, no la marca. Tamaños 30/50/80 vistos; también 100 y 150 ml en algunos listados, no incluidos. mas_vendido=true por aparecer en listados de ventas de fiabilidad desigual (ScentStore 2023 y otros)."
+  },
+  {
+    "slug": "viktor-rolf-flowerbomb",
+    "nombre": "Flowerbomb Eau de Parfum",
+    "marca": "Viktor&Rolf",
+    "genero": "mujer",
+    "familia": "floral",
+    "familia_detalle": "Floral oriental",
+    "notas_salida": "Té verde, bergamota",
+    "notas_corazon": "Jazmín sambac, rosa, freesia, orquídea cattleya",
+    "notas_fondo": "Pachulí, almizcle, ámbar, vainilla",
+    "duracion": "Larga (8 h o más)",
+    "estela": "Fuerte",
+    "ocasion": "Día y noche",
+    "temporadas": [
+      "primavera",
+      "otoño",
+      "invierno"
+    ],
+    "presentaciones_ml": [
+      30,
+      50,
+      100
+    ],
+    "anio_lanzamiento": 2005,
+    "perfumista": "Olivier Polge, Carlos Benaim y Domitille Bertier",
+    "mas_vendido": false,
+    "descripcion_corta": "Una explosión floral de jazmín, rosa y orquídea sobre pachulí y almizcle. Intenso, dulce y envolvente.",
+    "descripcion_larga": "Flowerbomb abre con té verde y bergamota, una brisa corta que da paso a un ramo denso de flores. El jazmín sambac, la rosa y la freesia se mezclan con orquídea hasta formar casi un solo acorde.\n\nLa base es de pachulí, ámbar y almizcle, con un toque dulce de vainilla. No es un floral delicado: es un perfume de volumen, envolvente y de estela larga. Se siente mejor cuando la temperatura baja y el aire está quieto. Con las horas, las flores se aquietan y el pachulí queda como un fondo oscuro, suave y persistente.",
+    "para_quien": "Para quien disfruta los florales intensos y cálidos, y quiere un aroma que ocupe espacio.",
+    "ocasiones_texto": "Va bien en tardes frescas, cenas y eventos; en calor, mejor una sola pulverización.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura Flowerbomb Eau de Parfum?",
+        "a": "Suele pasar de las ocho horas. Es un perfume concentrado en flores y pachulí que se mantiene bien en piel y ropa."
+      },
+      {
+        "q": "¿Es demasiado fuerte?",
+        "a": "Su estela es marcada. Una o dos pulverizaciones suelen bastar, sobre todo en espacios cerrados."
+      },
+      {
+        "q": "¿Qué tamaño elegir?",
+        "a": "Como rinde con poca cantidad, el de 30 o 50 ml cubre mucho tiempo. El de 100 ml es para quien ya lo tiene como favorito."
+      }
+    ],
+    "similares": [
+      "dior-j-adore",
+      "lancome-la-vie-est-belle",
+      "ysl-black-opium"
+    ],
+    "similares_motivo": "Todos combinan flores blancas con base cálida; Flowerbomb es el más floral y denso, J'adore es más frutal y ligero, y los otros dos son más gourmand.",
+    "seo_title": "Viktor&Rolf Flowerbomb Eau de Parfum | Haru",
+    "seo_description": "Viktor&Rolf Flowerbomb EDP: jazmín, rosa y orquídea sobre pachulí y almizcle. Notas, duración, tamaños y perfumes parecidos.",
+    "fuentes": [
+      "https://klinq.com/en/viktor-rolf-flower-bomb-edp.html",
+      "https://nearstore.com/en-ca/products/fxp4o68-p",
+      "https://www.fragman.com/products/viktor-rolf-flowerbomb-edt"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. Las listas de notas difieren entre tiendas (osmanto en una, vainilla en otra). El año 2005 y los tres perfumistas aparecen en tiendas; el apellido Bertier se escribe de varias formas. Tamaños 30/50/100 vistos en tiendas. mas_vendido=false: no apareció en los rankings revisados."
+  },
+  {
+    "slug": "mugler-alien",
+    "nombre": "Alien Eau de Parfum",
+    "marca": "Mugler",
+    "genero": "mujer",
+    "familia": "ambar",
+    "familia_detalle": "Floral amaderado con ámbar blanco",
+    "notas_salida": "Jazmín sambac",
+    "notas_corazon": "Madera cachemira (cashmeran)",
+    "notas_fondo": "Ámbar blanco",
+    "duracion": "Larga (8 h o más)",
+    "estela": "Fuerte",
+    "ocasion": "Día y noche",
+    "temporadas": [
+      "primavera",
+      "otoño",
+      "invierno"
+    ],
+    "presentaciones_ml": [
+      30,
+      60,
+      90
+    ],
+    "anio_lanzamiento": 2005,
+    "perfumista": "Dominique Ropion y Laurent Bruyère",
+    "mas_vendido": false,
+    "descripcion_corta": "Jazmín solar sobre madera suave y ámbar blanco. Un perfume que se siente cálido, abstracto y muy propio.",
+    "descripcion_larga": "Alien se construye con tres elementos claros. El jazmín sambac abre con una luz cálida, más cremosa que fresca. Debajo, la madera cachemira aporta un fondo suave, casi como piel tibia.\n\nEl ámbar blanco cierra con una nota mineral y resinosa, difícil de describir, que se queda por horas. No es un floral clásico ni un amaderado: es una mezcla distinta, con un halo que se nota a distancia. Pide pocas pulverizaciones y suele gustar a quien busca algo fuera de lo habitual. Con el tiempo, el jazmín se retira y queda el ámbar con la madera, tibios, como un recuerdo de sol.",
+    "para_quien": "Para quien quiere un aroma con identidad propia, lejos de los florales convencionales.",
+    "ocasiones_texto": "Va bien en tardes y noches, también de día si se aplica con mesura.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura Alien Eau de Parfum?",
+        "a": "Normalmente más de ocho horas. El ámbar y la madera son lo que más permanece."
+      },
+      {
+        "q": "¿Es muy fuerte?",
+        "a": "Tiene buena proyección, así que una o dos pulverizaciones suelen ser suficientes."
+      },
+      {
+        "q": "¿Qué tamaño conviene?",
+        "a": "El de 30 o 60 ml sirve para conocerlo. El de 90 ml es para quien lo usa a menudo."
+      }
+    ],
+    "similares": [
+      "mfk-baccarat-rouge-540",
+      "ysl-libre",
+      "viktor-rolf-flowerbomb"
+    ],
+    "similares_motivo": "Comparten base ambarada, jazmín y buena estela; Alien es más amaderado y mineral, Baccarat Rouge es más azucarado y Libre más aromático.",
+    "seo_title": "Mugler Alien Eau de Parfum | Haru",
+    "seo_description": "Mugler Alien Eau de Parfum: jazmín sambac, madera cachemira y ámbar blanco. Notas, duración, tamaños y perfumes parecidos.",
+    "fuentes": [
+      "https://www.mugler.com/fragrance/womens-fragrances/alien/alien-eau-de-parfum/M010401002.html",
+      "https://www.lookfantastic.com/p/mugler-alien-eau-de-parfum-natural-spray-refillable-90ml/10947978",
+      "https://thecandyperfumeboy.com/2011/10/04/intergalactic-jasmine-thierry-mugler-alien-perfume-review/"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. La ficha oficial de Mugler sí abrió y confirma jazmín, cashmeran y ámbar blanco; la pirámide completa (bergamota, vainilla, benjuí en algunas versiones) no la detallé. No pude confirmar en fuente directa el año 2005 ni a Laurent Bruyère (Ropion sí aparece en la web de Mugler); esos datos salen de mi conocimiento previo. Tamaños 30/60/90 con versión recargable; también existe 15 ml. mas_vendido=false: aparece solo en un listado."
+  },
+  {
+    "slug": "dior-miss-dior",
+    "nombre": "Miss Dior Eau de Parfum",
+    "marca": "Dior",
+    "genero": "mujer",
+    "familia": "floral",
+    "familia_detalle": "Floral con rosa y peonía",
+    "notas_salida": "Rosa centifolia, lirio de los valles, peonía, iris",
+    "notas_corazon": "Albaricoque, durazno, mandarina",
+    "notas_fondo": "Pachulí, ámbar, musgo, cedro",
+    "duracion": "Moderada (5–7 h)",
+    "estela": "Moderada",
+    "ocasion": "Día",
+    "temporadas": [
+      "primavera",
+      "verano"
+    ],
+    "presentaciones_ml": [
+      30,
+      50,
+      100
+    ],
+    "anio_lanzamiento": 2021,
+    "perfumista": "François Demachy",
+    "mas_vendido": false,
+    "descripcion_corta": "Rosa fresca, peonía y lirio de los valles sobre un fondo limpio de pachulí. Un floral claro y primaveral.",
+    "descripcion_larga": "Miss Dior abre con rosa recién cortada, peonía y lirio de los valles. Es un inicio verde y húmedo, como un jardín después de la lluvia.\n\nEn el corazón, albaricoque y durazno le dan una dulzura leve. El fondo, de pachulí, ámbar y musgo, aporta profundidad sin pesar. Es un floral luminoso y ligero, de los que acompañan sin interrumpir. Esta versión de 2021 es más fresca y limpia que las fórmulas anteriores de la casa. Con las horas el pachulí asoma, suave, y deja la rosa como un recuerdo fresco sobre la piel.",
+    "para_quien": "Para quien prefiere florales claros y delicados, con un toque fresco, para el día a día.",
+    "ocasiones_texto": "Funciona en mañanas, oficina y planes de primavera.",
+    "faq": [
+      {
+        "q": "¿Cuánto dura Miss Dior Eau de Parfum?",
+        "a": "Lo habitual son entre cinco y siete horas. Como es un floral fresco, conviene reaplicar si el día es largo."
+      },
+      {
+        "q": "¿Es adecuado para el calor?",
+        "a": "Sí, su perfil fresco y floral lo hace cómodo en clima templado y cálido."
+      },
+      {
+        "q": "¿Qué tamaño elegir?",
+        "a": "El de 50 ml es práctico para el día a día. El de 30 ml es fácil de llevar y el de 100 ml es para uso continuo."
+      }
+    ],
+    "similares": [
+      "dior-j-adore",
+      "chanel-coco-mademoiselle",
+      "chanel-no-5"
+    ],
+    "similares_motivo": "Todos son florales elegantes y limpios; Miss Dior es el más fresco y de rosa, J'adore es más frutal y N°5 más aldehídico.",
+    "seo_title": "Dior Miss Dior Eau de Parfum | Haru",
+    "seo_description": "Dior Miss Dior Eau de Parfum: rosa, peonía y lirio de los valles con pachulí limpio. Notas, duración, tamaños y perfumes parecidos.",
+    "fuentes": [
+      "https://www.scentdecant.com/products/miss-dior-eau-de-parfum-2021-christian-dior-perfume",
+      "https://thescentbase.com/perfumes/dior/miss-dior-eau-de-parfum-2021",
+      "https://www.decantx.com/products/dior-miss-dior-eau-de-parfum-for-women"
+    ],
+    "confianza": "media",
+    "notas_de_verificacion": "Fragrantica devolvió HTTP 403 (bloqueo automático), así que no se pudo contrastar contra ella. Las listas de notas se contradicen entre tiendas (la base con pachulí aparece solo en una; otra lista vainilla, tonka y sándalo). Usé la lista con pachulí y la marqué como menos segura. No encontré la ficha oficial de Dior. Año 2021 y Demachy según tiendas. Tamaños 30/50/100 supuestos de tiendas. Existen versiones anteriores del Miss Dior EDP con notas distintas."
+  }
+]

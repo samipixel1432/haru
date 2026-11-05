@@ -1,0 +1,373 @@
+{%- liquid
+  assign mf = product.metafields.haru
+  assign handles = mf.similares.value | split: ','
+  assign lista_similares = ''
+  assign total = 0
+  for h in handles
+    assign handle_limpio = h | strip | handleize
+    if handle_limpio != blank
+      assign p_sim = all_products[handle_limpio]
+      if p_sim != blank and p_sim.title != blank and p_sim.id != product.id
+        assign total = total | plus: 1
+        if total <= 6
+          assign lista_similares = lista_similares | append: handle_limpio | append: ','
+        endif
+      endif
+    endif
+  endfor
+  assign items = lista_similares | split: ','
+  assign fam_valor = mf.familia.value | downcase | strip
+  assign fam_este = ''
+  case fam_valor
+    when 'amaderado'
+      assign fam_este = 'Amaderado'
+    when 'floral'
+      assign fam_este = 'Floral'
+    when 'citrico'
+      assign fam_este = 'Cítrico'
+    when 'cítrico'
+      assign fam_este = 'Cítrico'
+    when 'ambar'
+      assign fam_este = 'Ámbar y especias'
+    when 'ámbar'
+      assign fam_este = 'Ámbar y especias'
+    when 'fresco'
+      assign fam_este = 'Fresco'
+    when 'dulce'
+      assign fam_este = 'Dulce'
+  endcase
+-%}
+{%- if items.size > 0 -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-pdp-sim{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --color-parrafo: {{ section.settings.color_parrafo }} !important;
+    --color-linea: color-mix(in srgb, {{ section.settings.color_texto }} 14%, transparent) !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    --tamano-nombre: {{ section.settings.tamano_nombre_movil }}px !important;
+    --tamano-etiqueta: {{ section.settings.tamano_etiqueta_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-pdp-sim *,
+  #shopify-section-{{ section.id }} .haru-pdp-sim *::before,
+  #shopify-section-{{ section.id }} .haru-pdp-sim *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__contenido{
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__etiqueta{
+    margin: 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    line-height: 1.4 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__titulo{
+    margin: 12px 0 0 !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__motivo{
+    max-width: 640px !important;
+    margin: 20px 0 0 !important;
+    color: var(--color-parrafo) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla-caja{
+    margin: 32px 0 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border: 1px solid var(--color-linea) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla-caja:focus-visible{
+    outline: 2px solid var(--color-acento) !important;
+    outline-offset: 2px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla{
+    width: 100% !important;
+    min-width: 520px !important;
+    border-collapse: collapse !important;
+    text-align: left !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla th,
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla td{
+    padding: 14px 16px !important;
+    border-bottom: 1px solid var(--color-linea) !important;
+    vertical-align: middle !important;
+    font-size: var(--tamano-texto) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla thead th{
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    font-weight: 400 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla tbody tr:last-child th,
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla tbody tr:last-child td{ border-bottom: 0 !important; }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tabla tbody th{
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-nombre) !important;
+    font-weight: 400 !important;
+    line-height: 1.15 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__fila--este{
+    background: color-mix(in srgb, var(--color-texto) 6%, transparent) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__marca{
+    display: block !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    letter-spacing: .12em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__carrusel{
+    display: flex !important;
+    gap: 16px !important;
+    margin: 40px -20px 0 !important;
+    padding: 0 20px 8px !important;
+    list-style: none !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding-inline: 20px !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__carrusel::-webkit-scrollbar{ display: none !important; }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__carrusel:focus-visible{
+    outline: 2px solid var(--color-acento) !important;
+    outline-offset: -2px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__tarjeta{
+    flex: 0 0 72% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    scroll-snap-align: start !important;
+    list-style: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__enlace{
+    display: block !important;
+    color: var(--color-texto) !important;
+    text-decoration: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__enlace:focus-visible{
+    outline: 2px solid var(--color-acento) !important;
+    outline-offset: 4px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__marco{
+    width: 100% !important;
+    aspect-ratio: 4 / 5 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    background: var(--color-linea) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__ph{
+    width: 100% !important;
+    height: 100% !important;
+    border: 2px dashed var(--color-linea) !important;
+    background: color-mix(in srgb, var(--color-texto) 4%, transparent) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__img{
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform .6s cubic-bezier(.22,1,.36,1) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__enlace:hover .haru-pdp-sim__img{ transform: scale(1.04) !important; }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__vendor{
+    margin: 16px 0 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: var(--color-acento) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__nombre{
+    margin: 6px 0 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-nombre) !important;
+    font-weight: 400 !important;
+    line-height: 1.15 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-sim__ver{
+    display: inline-block !important;
+    margin: 8px 0 0 !important;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: var(--tamano-etiqueta) !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid currentColor !important;
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-pdp-sim{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      --tamano-nombre: {{ section.settings.tamano_nombre }}px !important;
+      --tamano-etiqueta: {{ section.settings.tamano_etiqueta }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-pdp-sim__contenido{ padding-inline: 32px !important; }
+    #shopify-section-{{ section.id }} .haru-pdp-sim__carrusel{
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 24px !important;
+      margin: 56px 0 0 !important;
+      padding: 0 !important;
+      overflow: visible !important;
+    }
+    #shopify-section-{{ section.id }} .haru-pdp-sim__tarjeta{ flex: none !important; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #shopify-section-{{ section.id }} .haru-pdp-sim__img{ transition-duration: .01ms !important; }
+  }
+{%- endstyle -%}
+
+<section class="haru-pdp-sim haru-pdp-sim-{{ section.id }}">
+  <div class="haru-pdp-sim__contenido">
+    {%- if section.settings.etiqueta != blank -%}
+      <p class="haru-pdp-sim__etiqueta">{{ section.settings.etiqueta }}</p>
+    {%- endif -%}
+    <h2 class="haru-pdp-sim__titulo">{{ section.settings.titulo }}</h2>
+    {%- if mf.similares_motivo.value != blank -%}
+      <p class="haru-pdp-sim__motivo">{{ mf.similares_motivo.value | escape | newline_to_br }}</p>
+    {%- endif -%}
+
+    <div class="haru-pdp-sim__tabla-caja" tabindex="0">
+      <table class="haru-pdp-sim__tabla">
+        <thead>
+          <tr>
+            <th scope="col">{{ section.settings.col_perfume }}</th>
+            <th scope="col">{{ section.settings.col_familia }}</th>
+            <th scope="col">{{ section.settings.col_duracion }}</th>
+            <th scope="col">{{ section.settings.col_estela }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="haru-pdp-sim__fila--este">
+            <th scope="row"><span class="haru-pdp-sim__marca">{{ section.settings.texto_este }}</span>{{ product.title }}</th>
+            <td>{{ fam_este | default: '—' }}</td>
+            <td>{{ mf.duracion.value | escape | default: '—' }}</td>
+            <td>{{ mf.estela.value | escape | default: '—' }}</td>
+          </tr>
+          {%- for handle in items -%}
+            {%- assign p = all_products[handle] -%}
+            {%- assign fam_p = p.metafields.haru.familia.value | downcase | strip -%}
+            {%- assign fam_label = '' -%}
+            {%- case fam_p -%}
+              {%- when 'amaderado' -%}{%- assign fam_label = 'Amaderado' -%}
+              {%- when 'floral' -%}{%- assign fam_label = 'Floral' -%}
+              {%- when 'citrico' or 'cítrico' -%}{%- assign fam_label = 'Cítrico' -%}
+              {%- when 'ambar' or 'ámbar' -%}{%- assign fam_label = 'Ámbar y especias' -%}
+              {%- when 'fresco' -%}{%- assign fam_label = 'Fresco' -%}
+              {%- when 'dulce' -%}{%- assign fam_label = 'Dulce' -%}
+            {%- endcase -%}
+            <tr>
+              <th scope="row">{{ p.title }}</th>
+              <td>{{ fam_label | default: '—' }}</td>
+              <td>{{ p.metafields.haru.duracion.value | escape | default: '—' }}</td>
+              <td>{{ p.metafields.haru.estela.value | escape | default: '—' }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="haru-pdp-sim__carrusel" tabindex="0">
+      {%- for handle in items -%}
+        {%- assign p = all_products[handle] -%}
+        <li class="haru-pdp-sim__tarjeta">
+          <a class="haru-pdp-sim__enlace" href="{{ p.url }}">
+            <div class="haru-pdp-sim__marco">
+              {%- if p.featured_image != blank -%}
+                {{ p.featured_image | image_url: width: 800 | image_tag:
+                  widths: '300, 500, 800',
+                  sizes: '(min-width: 750px) 30vw, 72vw',
+                  loading: 'lazy',
+                  alt: p.featured_image.alt | default: p.title,
+                  class: 'haru-pdp-sim__img' }}
+              {%- else -%}
+                <div class="haru-pdp-sim__ph"></div>
+              {%- endif -%}
+            </div>
+            {%- if p.vendor != blank -%}
+              <p class="haru-pdp-sim__vendor">{{ p.vendor }}</p>
+            {%- endif -%}
+            <h3 class="haru-pdp-sim__nombre">{{ p.title }}</h3>
+            {%- if section.settings.texto_ver != blank -%}
+              <span class="haru-pdp-sim__ver">{{ section.settings.texto_ver }}</span>
+            {%- endif -%}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Haru PDP Similares",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "etiqueta", "label": "Etiqueta superior", "default": "Comparar" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Si te gusta este, mira también" },
+    { "type": "text", "id": "texto_este", "label": "Marca de la fila de este perfume", "default": "Este perfume" },
+    { "type": "text", "id": "texto_ver", "label": "Texto del enlace de cada tarjeta", "default": "Ver perfume" },
+    { "type": "text", "id": "col_perfume", "label": "Columna: perfume", "default": "Perfume" },
+    { "type": "text", "id": "col_familia", "label": "Columna: familia", "default": "Familia" },
+    { "type": "text", "id": "col_duracion", "label": "Columna: duración", "default": "Duración" },
+    { "type": "text", "id": "col_estela", "label": "Columna: estela", "default": "Estela" },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#e9e2d6" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#16130f" },
+    { "type": "color", "id": "color_parrafo", "label": "Texto secundario", "default": "#3a352d" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#7a5c3c" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño del título (escritorio)", "min": 24, "max": 100, "step": 2, "unit": "px", "default": 52 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño del título (móvil)", "min": 20, "max": 70, "step": 2, "unit": "px", "default": 34 },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "tamano_nombre", "label": "Tamaño de nombres (escritorio)", "min": 16, "max": 48, "step": 1, "unit": "px", "default": 28 },
+    { "type": "range", "id": "tamano_nombre_movil", "label": "Tamaño de nombres (móvil)", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 22 },
+    { "type": "range", "id": "tamano_etiqueta", "label": "Tamaño de etiquetas (escritorio)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 11 },
+    { "type": "range", "id": "tamano_etiqueta_movil", "label": "Tamaño de etiquetas (móvil)", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 10 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 72 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "presets": [
+    { "name": "Haru PDP Similares" }
+  ]
+}
+{% endschema %}

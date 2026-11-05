@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lotes generados para Shopify (se regeneran con build-inputs.mjs)
+/shopify/catalog/inputs/

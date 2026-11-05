@@ -1,0 +1,169 @@
+{%- liquid
+  assign hay_bloques = false
+  for block in section.blocks
+    if block.settings.titulo != blank or block.settings.texto != blank
+      assign hay_bloques = true
+    endif
+  endfor
+-%}
+{%- if hay_bloques -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .haru-pdp-conf{
+    --ancho-contenido: {{ section.settings.ancho_contenido }}px !important;
+    --color-fondo: {{ section.settings.color_fondo }} !important;
+    --color-texto: {{ section.settings.color_texto }} !important;
+    --color-acento: {{ section.settings.color_acento }} !important;
+    --color-parrafo: {{ section.settings.color_parrafo }} !important;
+    --color-linea: color-mix(in srgb, {{ section.settings.color_texto }} 14%, transparent) !important;
+    --tamano-titulo: {{ section.settings.tamano_titulo_movil }}px !important;
+    --tamano-bloque: {{ section.settings.tamano_bloque_movil }}px !important;
+    --tamano-texto: {{ section.settings.tamano_texto_movil }}px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    padding-top: {{ section.settings.padding_superior_movil }}px !important;
+    padding-bottom: {{ section.settings.padding_inferior_movil }}px !important;
+    background: var(--color-fondo) !important;
+    color: var(--color-texto) !important;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif !important;
+    font-size: var(--tamano-texto) !important;
+    line-height: 1.6 !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-conf :where(h1,h2,h3,h4,h5,p,a,ul,ol,li,b,s,em,strong,span,small,summary,blockquote,figcaption){ color: inherit !important; font-family: inherit !important; }
+  #shopify-section-{{ section.id }} .haru-pdp-conf *,
+  #shopify-section-{{ section.id }} .haru-pdp-conf *::before,
+  #shopify-section-{{ section.id }} .haru-pdp-conf *::after{
+    box-sizing: border-box !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-conf__contenido{
+    max-width: var(--ancho-contenido) !important;
+    margin-inline: auto !important;
+    padding-inline: 20px !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-conf__titulo{
+    margin: 0 0 32px !important;
+    padding: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-titulo) !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: -.01em !important;
+    text-transform: none !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-conf__lista{
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    border: 1px solid var(--color-linea) !important;
+    background: var(--color-linea) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-conf__item{
+    margin: 0 !important;
+    padding: 24px 20px !important;
+    list-style: none !important;
+    background: var(--color-fondo) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-conf__nombre{
+    margin: 0 !important;
+    font-family: 'Instrument Serif', Georgia, serif !important;
+    font-size: var(--tamano-bloque) !important;
+    font-weight: 400 !important;
+    line-height: 1.15 !important;
+    color: var(--color-texto) !important;
+  }
+  #shopify-section-{{ section.id }} .haru-pdp-conf__texto{
+    margin: 8px 0 0 !important;
+    color: var(--color-parrafo) !important;
+  }
+  @media screen and (min-width: 750px){
+    #shopify-section-{{ section.id }} .haru-pdp-conf{
+      --tamano-titulo: {{ section.settings.tamano_titulo }}px !important;
+      --tamano-bloque: {{ section.settings.tamano_bloque }}px !important;
+      --tamano-texto: {{ section.settings.tamano_texto }}px !important;
+      padding-top: {{ section.settings.padding_superior }}px !important;
+      padding-bottom: {{ section.settings.padding_inferior }}px !important;
+    }
+    #shopify-section-{{ section.id }} .haru-pdp-conf__contenido{ padding-inline: 32px !important; }
+    #shopify-section-{{ section.id }} .haru-pdp-conf__lista{
+      grid-template-columns: repeat({{ section.settings.columnas }}, minmax(0, 1fr)) !important;
+    }
+    #shopify-section-{{ section.id }} .haru-pdp-conf__item{ padding: 32px !important; }
+  }
+{%- endstyle -%}
+
+<section class="haru-pdp-conf haru-pdp-conf-{{ section.id }}">
+  <div class="haru-pdp-conf__contenido">
+    {%- if section.settings.titulo != blank -%}
+      <h2 class="haru-pdp-conf__titulo">{{ section.settings.titulo }}</h2>
+    {%- endif -%}
+    <ul class="haru-pdp-conf__lista">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.titulo != blank or block.settings.texto != blank -%}
+          <li class="haru-pdp-conf__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.titulo != blank -%}
+              <h3 class="haru-pdp-conf__nombre">{{ block.settings.titulo }}</h3>
+            {%- endif -%}
+            {%- if block.settings.texto != blank -%}
+              <p class="haru-pdp-conf__texto">{{ block.settings.texto }}</p>
+            {%- endif -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Haru PDP Confianza",
+  "max_blocks": 6,
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "header", "content": "Contenido" },
+    { "type": "text", "id": "titulo", "label": "Título (opcional)" },
+    { "type": "range", "id": "columnas", "label": "Columnas en escritorio", "min": 1, "max": 4, "step": 1, "default": 3 },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "color_fondo", "label": "Fondo", "default": "#f2ede4" },
+    { "type": "color", "id": "color_texto", "label": "Texto", "default": "#16130f" },
+    { "type": "color", "id": "color_parrafo", "label": "Texto secundario", "default": "#3a352d" },
+    { "type": "color", "id": "color_acento", "label": "Acento", "default": "#7a5c3c" },
+    { "type": "header", "content": "Tipografía" },
+    { "type": "range", "id": "tamano_titulo", "label": "Tamaño del título (escritorio)", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 44 },
+    { "type": "range", "id": "tamano_titulo_movil", "label": "Tamaño del título (móvil)", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "tamano_bloque", "label": "Tamaño de títulos de bloque (escritorio)", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 26 },
+    { "type": "range", "id": "tamano_bloque_movil", "label": "Tamaño de títulos de bloque (móvil)", "min": 16, "max": 36, "step": 1, "unit": "px", "default": 22 },
+    { "type": "range", "id": "tamano_texto", "label": "Tamaño del texto (escritorio)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "tamano_texto_movil", "label": "Tamaño del texto (móvil)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 14 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_superior", "label": "Padding superior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_inferior", "label": "Padding inferior (escritorio)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_superior_movil", "label": "Padding superior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_inferior_movil", "label": "Padding inferior (móvil)", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 56 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "ancho_contenido", "label": "Ancho máximo del contenido", "min": 1000, "max": 1800, "step": 40, "unit": "px", "default": 1280 }
+  ],
+  "blocks": [
+    {
+      "type": "bloque",
+      "name": "Bloque de confianza",
+      "settings": [
+        { "type": "text", "id": "titulo", "label": "Título" },
+        { "type": "textarea", "id": "texto", "label": "Texto" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Haru PDP Confianza",
+      "blocks": [
+        { "type": "bloque" },
+        { "type": "bloque" },
+        { "type": "bloque" }
+      ]
+    }
+  ]
+}
+{% endschema %}

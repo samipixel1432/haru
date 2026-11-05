@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": {
+      "type": "HaruPDP-Hero",
+      "settings": {}
+    },
+    "piramide": {
+      "type": "HaruPDP-Piramide",
+      "settings": {}
+    },
+    "perfil": {
+      "type": "HaruPDP-Perfil",
+      "settings": {}
+    },
+    "similares": {
+      "type": "HaruPDP-Similares",
+      "settings": {}
+    },
+    "faq": {
+      "type": "HaruPDP-FAQ",
+      "settings": {}
+    },
+    "confianza": {
+      "type": "HaruPDP-Confianza",
+      "settings": {}
+    },
+    "resenas": {
+      "type": "HaruPDP-Resenas",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "piramide",
+    "perfil",
+    "similares",
+    "faq",
+    "confianza",
+    "resenas"
+  ]
+}
