@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { useCart } from "@/lib/cart-context";
-import { buildWhatsappLink, formatPrice } from "@/lib/whatsapp";
+import { buildWhatsappLink, formatPrice, formatTotal } from "@/lib/whatsapp";
 import { STORE } from "@/lib/store-config";
 import { CloseIcon, WhatsappIcon } from "@/components/Icons";
 import { ProductImage } from "@/components/ProductImage";
@@ -131,7 +131,7 @@ export function CartDrawer() {
             <div className="border-t border-line bg-sand/50 px-6 py-5">
               <div className="flex items-baseline justify-between">
                 <span className="label text-muted">Total</span>
-                <span className="font-display text-3xl tabular-nums">{formatPrice(totalPrice)}</span>
+                <span className="font-display text-3xl tabular-nums">{formatTotal(items)}</span>
               </div>
               <p className="mt-1 text-xs text-muted">
                 Envío y pago se acuerdan por WhatsApp. No cobramos nada aquí.

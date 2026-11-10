@@ -132,7 +132,7 @@ export function ProductDetailActions({ product }: { product: Product }) {
                 </button>
               </div>
               <button onClick={() => addItem(product, quantity)} className="btn flex-1">
-                Agregar · {formatPrice(product.price * quantity)}
+                {product.price > 0 ? `Agregar · ${formatPrice(product.price * quantity)}` : "Agregar al carrito"}
               </button>
             </div>
             <a

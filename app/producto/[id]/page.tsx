@@ -51,12 +51,15 @@ export default async function ProductPage({
     name: product.name,
     description: product.description ?? undefined,
     image: product.image_url ?? undefined,
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "COP",
-      price: product.price,
-      availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-    },
+    offers:
+      product.price > 0
+        ? {
+            "@type": "Offer",
+            priceCurrency: "COP",
+            price: product.price,
+            availability: product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+          }
+        : undefined,
   };
 
   return (

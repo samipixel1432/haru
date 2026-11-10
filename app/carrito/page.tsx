@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/lib/cart-context";
-import { formatPrice, buildWhatsappLink } from "@/lib/whatsapp";
+import { formatPrice, formatTotal, buildWhatsappLink } from "@/lib/whatsapp";
 import { STORE, TRUST_POINTS } from "@/lib/store-config";
 import { ProductImage } from "@/components/ProductImage";
 import { WhatsappIcon } from "@/components/Icons";
@@ -60,7 +60,7 @@ export default function CarritoPage() {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="font-display text-2xl leading-tight md:text-3xl">{item.name}</p>
-                        <p className="mt-1 text-sm text-muted">{formatPrice(item.price)} c/u</p>
+                        <p className="mt-1 text-sm text-muted">{item.price > 0 ? `${formatPrice(item.price)} c/u` : "Precio por confirmar"}</p>
                       </div>
                       <p className="text-sm tabular-nums">{formatPrice(item.price * item.quantity)}</p>
                     </div>
@@ -100,7 +100,7 @@ export default function CarritoPage() {
               <h2 className="font-display text-3xl">Resumen</h2>
               <div className="mt-6 flex items-baseline justify-between border-t border-line pt-5">
                 <span className="label text-muted">Total</span>
-                <span className="font-display text-4xl tabular-nums">{formatPrice(totalPrice)}</span>
+                <span className="font-display text-4xl tabular-nums">{formatTotal(items)}</span>
               </div>
               <p className="mt-2 text-xs text-muted">
                 Envío y medio de pago los acordamos por WhatsApp. Aquí no se cobra nada.

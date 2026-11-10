@@ -3,7 +3,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const dir = dirname(fileURLToPath(import.meta.url));
-const parts = ["parte-A.json", "parte-B.json", "parte-C.json"];
+const parts = ["parte-A.json", "parte-B.json", "parte-C.json", "parte-D.json", "parte-E.json"];
 
 const FAMILIAS = ["amaderado", "floral", "citrico", "ambar", "fresco", "dulce"];
 const DURACIONES = ["Suave (3–4 h)", "Moderada (5–7 h)", "Larga (8 h o más)"];

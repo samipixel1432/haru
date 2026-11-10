@@ -1,5 +1,13 @@
 [
   {
+    "marca": "Armaf",
+    "tag": "marca:armaf"
+  },
+  {
+    "marca": "Azzaro",
+    "tag": "marca:azzaro"
+  },
+  {
     "marca": "Byredo",
     "tag": "marca:byredo"
   },
@@ -20,12 +28,24 @@
     "tag": "marca:dior"
   },
   {
+    "marca": "Dolce&Gabbana",
+    "tag": "marca:dolce-gabbana"
+  },
+  {
     "marca": "Giorgio Armani",
     "tag": "marca:giorgio-armani"
   },
   {
+    "marca": "Gucci",
+    "tag": "marca:gucci"
+  },
+  {
     "marca": "Hermès",
     "tag": "marca:hermes"
+  },
+  {
+    "marca": "Hugo Boss",
+    "tag": "marca:hugo-boss"
   },
   {
     "marca": "Jean Paul Gaultier",
@@ -56,16 +76,32 @@
     "tag": "marca:maison-margiela"
   },
   {
+    "marca": "Marc Jacobs",
+    "tag": "marca:marc-jacobs"
+  },
+  {
     "marca": "Mugler",
     "tag": "marca:mugler"
+  },
+  {
+    "marca": "Narciso Rodriguez",
+    "tag": "marca:narciso-rodriguez"
   },
   {
     "marca": "Paco Rabanne",
     "tag": "marca:paco-rabanne"
   },
   {
+    "marca": "Prada",
+    "tag": "marca:prada"
+  },
+  {
     "marca": "Tom Ford",
     "tag": "marca:tom-ford"
+  },
+  {
+    "marca": "Valentino",
+    "tag": "marca:valentino"
   },
   {
     "marca": "Versace",
