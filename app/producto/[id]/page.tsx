@@ -5,7 +5,7 @@ import { getProduct, getProducts } from "@/lib/products";
 import { formatPrice } from "@/lib/whatsapp";
 import { NotesPyramid } from "@/components/NotesPyramid";
 import { ProductCard, ProductDetailActions } from "@/components/ProductCard";
-import { ProductImage } from "@/components/ProductImage";
+import { Gallery } from "@/components/Gallery";
 import { Faq } from "@/components/Faq";
 import { CATEGORIES, getFamilyLabel } from "@/lib/types";
 import { FAQ, TRUST_POINTS } from "@/lib/store-config";
@@ -80,14 +80,12 @@ export default async function ProductPage({
         </nav>
 
         <div className="mt-8 grid gap-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-sand md:sticky md:top-28 md:self-start">
-            <ProductImage
-              src={product.image_url}
-              alt={product.name}
-              sizes="(max-width: 768px) 100vw, 55vw"
-              priority
-            />
-          </div>
+          <Gallery
+            name={product.name}
+            images={[product.image_url, ...(product.gallery ?? [])].filter(
+              (src, i, all): src is string => Boolean(src) && all.indexOf(src) === i
+            )}
+          />
 
           <div>
             {family && <p className="label text-bronze">{family}</p>}

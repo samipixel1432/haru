@@ -1,4 +1,5 @@
 import { CartItem, getCategoryLabel } from "./types";
+import { STORE } from "./store-config";
 
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "573184124805";
 
@@ -31,7 +32,7 @@ export function buildWhatsappMessage(items: CartItem[], customer?: CustomerInfo)
         itemLines.push(`   Descripción: ${item.description}`);
       }
       if (item.image_url) {
-        itemLines.push(`   Foto: ${item.image_url}`);
+        itemLines.push(`   Foto: ${item.image_url.startsWith("/") ? STORE.siteUrl + item.image_url : item.image_url}`);
       }
 
       itemLines.push(

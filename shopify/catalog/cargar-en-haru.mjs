@@ -22,7 +22,7 @@ const sizeOf = (sizes) => {
   return s.includes(100) ? 100 : s[Math.floor(s.length / 2)];
 };
 
-const rows = all.map((x) => ({
+const baseRows = all.map((x) => ({
   name: `${x.marca} ${x.nombre}`,
   description: x.descripcion_corta,
   price: 0,
@@ -39,6 +39,22 @@ const rows = all.map((x) => ({
   size_ml: sizeOf(x.presentaciones_ml),
 }));
 
+const fotosFile = join(dir, "productos-fotos.json");
+const conFotos = existsSync(fotosFile)
+  ? JSON.parse(readFileSync(fotosFile, "utf8")).map((p) => ({
+      name: p.nombre,
+      description: p.descripcion,
+      price: 0,
+      category: p.categoria,
+      image_url: p.fotos[0],
+      gallery: p.fotos,
+      stock: 10,
+      featured: false,
+      ...(p.familia ? { family: p.familia } : {}),
+    }))
+  : [];
+const rows = [...conFotos, ...baseRows];
+
 const headers = { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json" };
 
 const existing = await fetch(`${url}/rest/v1/products?select=name&limit=1000`, { headers }).then((r) => r.json());
@@ -49,7 +65,7 @@ console.log(`catálogo: ${rows.length} | ya existen: ${rows.length - nuevos.leng
 async function insert(batch, withExtras) {
   const body = withExtras
     ? batch
-    : batch.map(({ family, notes_top, notes_heart, notes_base, longevity, occasion, size_ml, ...rest }) => rest);
+    : batch.map(({ family, notes_top, notes_heart, notes_base, longevity, occasion, size_ml, gallery, ...rest }) => rest);
   const res = await fetch(`${url}/rest/v1/products`, {
     method: "POST",
     headers: { ...headers, Prefer: "return=minimal" },

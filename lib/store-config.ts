@@ -3,6 +3,7 @@
 
 export const STORE = {
   name: "Haru",
+  siteUrl: "https://haru-zeta-blond.vercel.app",
   tagline: "Atelier de aromas y joyas",
   announcement: "Asesoría personal por WhatsApp.",
   // Pon un monto en COP para activar la barra de envío gratis en el carrito. null = desactivada.

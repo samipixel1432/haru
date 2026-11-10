@@ -8,6 +8,7 @@ export type Product = {
   stock: number;
   featured: boolean;
   created_at: string;
+  gallery?: string[] | null;
   family?: string | null;
   notes_top?: string | null;
   notes_heart?: string | null;
