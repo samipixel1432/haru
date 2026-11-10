@@ -53,7 +53,8 @@ const conFotos = existsSync(fotosFile)
       ...(p.familia ? { family: p.familia } : {}),
     }))
   : [];
-const rows = [...conFotos, ...baseRows];
+const COLUMNAS = ["name", "description", "price", "category", "image_url", "gallery", "stock", "featured", "family", "notes_top", "notes_heart", "notes_base", "longevity", "occasion", "size_ml"];
+const rows = [...conFotos, ...baseRows].map((r) => Object.fromEntries(COLUMNAS.map((c) => [c, r[c] ?? null])));
 
 const headers = { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json" };
 
